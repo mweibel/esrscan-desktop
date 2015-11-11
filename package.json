@@ -1,0 +1,30 @@
+{
+  "name": "ESRScannerServer",
+  "version": "0.0.1",
+  "description": "Server listening for scanned ESR data on the local network",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mweibel/ESRScannerServer.git"
+  },
+  "keywords": [
+    "ESR",
+    "Einzahlungsschein",
+    "Bonjour"
+  ],
+  "author": "Michael Weibel <michael.weibel@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mweibel/ESRScannerServer/issues"
+  },
+  "homepage": "https://github.com/mweibel/ESRScannerServer",
+  "devDependencies": {
+    "electron-prebuilt": "^0.34.0"
+  },
+  "dependencies": {
+    "diont": "^0.9.6"
+  }
+}
