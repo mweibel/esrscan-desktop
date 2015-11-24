@@ -4,9 +4,19 @@
     <title>Hello World!</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <ul id="scans">
+      <li>foobar</li>
+    </ul>
+    <script>
+      const ipc = require('ipc');
+      var scans = [];
+      var ul = document.getElementById('scans');
+      console.log('yoyo');
+      ipc.on('scan', function(scan) {
+        scans.push(scan);
+
+        ul.innerHTML += '<li>' + JSON.stringify(scan) + '</li>';
+      });
+    </script>
   </body>
 </html>

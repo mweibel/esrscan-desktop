@@ -53,7 +53,11 @@ function handleScan(request, response) {
     }
   });
   request.on('end', function() {
-    console.log(JSON.parse(body));
+    var scan = JSON.parse(body);
+    console.log(scan);
+
+    mainWindow.webContents.send('scan', scan);
+
     response.writeHead(200, {"Content-Type": "application/json"});
     response.end();
   });
