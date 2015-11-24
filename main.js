@@ -1,6 +1,5 @@
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
-var diont = require('diont')();
 
 // Report crashes to our server.
 require('crash-reporter').start();
@@ -36,23 +35,46 @@ app.on('ready', function() {
   });
 });
 
-diont.on("serviceAnnounced", function(serviceInfo) {
-  // A service was announced
-  // This function triggers for services not yet available in diont.getServiceInfos()
-  // serviceInfo is an Object { isOurService : Boolean, service: Object }
-  // service.name, service.host and service.port are always filled
-  console.log("A new service was announced", serviceInfo.service);
-  // List currently known services
-  console.log("All known services", diont.getServiceInfos());
+console.log("starting stuff");
+
+var http = require('http');
+var os = require('os');
+var mdns = require('mdns');
+var address = require('network-address');
+
+function handleScan(request, response) {
+  var body = '';
+
+  request.on('data', function(data) {
+    body += data;
+    // prevent too much data, one kb should be enough.
+    if (body.length > 1024) {
+      request.connection.destroy();
+    }
+  });
+  request.on('end', function() {
+    console.log(JSON.parse(body));
+    response.writeHead(200, {"Content-Type": "application/json"});
+    response.end();
+  });
+}
+
+var server = http.createServer(function onRequest(request, response) {
+  if (request.method == 'POST' && request.url == '/scan') {
+    return handleScan(request, response);
+  }
+  response.writeHead(404, {"Content-Type": "text/plain"});
+  response.end("Not Found");
 });
 
-diont.on("serviceRenounced", function(serviceInfo) {
-  console.log("A service was renounced", serviceInfo.service);
-  console.log("All known services", diont.getServiceInfos());
+server.listen(0, '0.0.0.0', function onStarted() {
+  console.log(arguments, server.address(), address(), os.hostname());
+  var options = {
+    networkInterface: address(),
+    host: os.hostname()
+  };
+  var ad = mdns.createAdvertisement(mdns.tcp('esrhttp'), server.address().port, options, function registered() {
+    console.log(arguments);
+  });
+  ad.start();
 });
-
-var service = {
-  name: 'ESRScannerServer',
-  port: '5476'
-};
-diont.announceService(service);

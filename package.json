@@ -1,7 +1,7 @@
 {
-  "name": "ESRScannerServer",
+  "name": "ESRScannerReceiver",
   "version": "0.0.1",
-  "description": "Server listening for scanned ESR data on the local network",
+  "description": "Receiver listening for scanned ESR data on the local network",
   "main": "main.js",
   "scripts": {
     "start": "electron main.js"
@@ -18,13 +18,14 @@
   "author": "Michael Weibel <michael.weibel@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mweibel/ESRScannerServer/issues"
+    "url": "https://github.com/mweibel/ESRScannerReceiver/issues"
   },
-  "homepage": "https://github.com/mweibel/ESRScannerServer",
+  "homepage": "https://github.com/mweibel/ESRScannerReceiver",
   "devDependencies": {
     "electron-prebuilt": "^0.34.0"
   },
   "dependencies": {
-    "diont": "^0.9.6"
+    "mdns": "^2.2.10",
+    "network-address": "^1.0.0"
   }
 }
