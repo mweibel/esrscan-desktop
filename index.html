@@ -1,22 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello World!</title>
+    <title>ESR Scanner</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/app.css"/>
   </head>
-  <body>
-    <ul id="scans">
-      <li>foobar</li>
-    </ul>
-    <script>
-      const ipc = require('ipc');
-      var scans = [];
-      var ul = document.getElementById('scans');
-      console.log('yoyo');
-      ipc.on('scan', function(scan) {
-        scans.push(scan);
-
-        ul.innerHTML += '<li>' + JSON.stringify(scan) + '</li>';
-      });
-    </script>
+  <body class="esrscanner">
+    <div class="full-width" id="container"></div>
+    <script src="dist/app.js"></script>
   </body>
 </html>

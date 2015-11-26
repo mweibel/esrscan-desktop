@@ -1,0 +1,47 @@
+html, body {
+  width: 100%;
+  font-size: 100%;
+  color: #0e0e0e;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.esrscanner {
+  font-family: -apple-system-body, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.txt-big {
+  font-size: 1.5rem;
+}
+
+.txt-grey {
+  color: rgb(148, 148, 151);
+}
+
+.brd-bottom-grey {
+  border-bottom: rgb(200, 199, 204) solid 1px;
+}
+
+.no-cellspacing {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.ptn {
+  padding-top: 0;
+}
+
+.phh {
+  padding: 1.5rem 0;
+}
+
+.prs {
+  padding-right: 0.2rem;
+}

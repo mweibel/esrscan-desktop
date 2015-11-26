@@ -22,10 +22,26 @@
   },
   "homepage": "https://github.com/mweibel/ESRScannerReceiver",
   "devDependencies": {
-    "electron-prebuilt": "^0.34.0"
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-0": "^6.1.18",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "electron-connect": "^0.3.3",
+    "electron-prebuilt": "^0.34.0",
+    "eslint-plugin-react": "^3.10.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.6.1"
   },
   "dependencies": {
     "mdns": "^2.2.10",
-    "network-address": "^1.0.0"
+    "network-address": "^1.0.0",
+    "os-locale": "^1.4.0",
+    "react": "^0.14.3",
+    "react-dom": "^0.14.3"
   }
 }

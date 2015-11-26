@@ -1,3 +1,5 @@
+'use strict';
+
 var app = require('app');  // Module to control application life.
 var BrowserWindow = require('browser-window');  // Module to create native browser window.
 
@@ -12,7 +14,7 @@ var mainWindow = null;
 app.on('window-all-closed', function() {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
-  if (process.platform != 'darwin') {
+  if (process.platform !== 'darwin') {
     app.quit();
   }
 });
@@ -33,9 +35,13 @@ app.on('ready', function() {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  if (process.env.NODE_ENV === 'dev') {
+    require('electron-connect').client.create(mainWindow);
+  }
 });
 
-console.log("starting stuff");
+console.log('starting stuff');
 
 var http = require('http');
 var os = require('os');
@@ -58,17 +64,17 @@ function handleScan(request, response) {
 
     mainWindow.webContents.send('scan', scan);
 
-    response.writeHead(200, {"Content-Type": "application/json"});
+    response.writeHead(200, {'Content-Type': 'application/json'});
     response.end();
   });
 }
 
 var server = http.createServer(function onRequest(request, response) {
-  if (request.method == 'POST' && request.url == '/scan') {
+  if (request.method === 'POST' && request.url === '/scan') {
     return handleScan(request, response);
   }
-  response.writeHead(404, {"Content-Type": "text/plain"});
-  response.end("Not Found");
+  response.writeHead(404, {'Content-Type': 'text/plain'});
+  response.end('Not Found');
 });
 
 server.listen(0, '0.0.0.0', function onStarted() {
