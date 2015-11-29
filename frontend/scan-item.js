@@ -1,7 +1,6 @@
 import React from 'react';
 import Scan from './scan';
-
-const clipboard = window.require('clipboard');
+import Copyable from './copyable';
 
 // the following code is pretty ugly.
 // should find a better way to do i18n
@@ -17,10 +16,6 @@ if (availableLocales.indexOf(locale) === -1) {
 const translation = require('./i18n/' + locale);
 
 export default class ScanItem extends React.Component {
-  onClick(el) {
-    clipboard.writeText(el.target.innerHTML.trim());
-  }
-
   render () {
     var classes = 'row brd-bottom-grey phh txt-big';
     if(this.props.index === 0) {
@@ -31,21 +26,17 @@ export default class ScanItem extends React.Component {
       <div className={classes}>
         <p>
           <span className="txt-grey prs">{translation.accountNumber}:</span>
-          <a className="copyable" onClick={this.onClick} href="#">
-            {this.props.item.accountNumber()} <i className="dis-hidden fa fa-clipboard"></i>
-          </a>
+          <Copyable text={this.props.item.accountNumber()}/>
         </p>
         {this.props.item.rawAmount ? (
           <p>
             <span className="txt-grey prs">{translation.amount}:</span>
-            CHF <a className="copyable" onClick={this.onClick} href="#">{this.props.item.amount()} <i className="dis-hidden fa fa-clipboard"></i></a>
+            CHF <Copyable text={this.props.item.amount()}/>
           </p>
         ) : null}
         <p>
           <span className="txt-grey prs">{translation.referenceNumber}:</span>
-          <a className="copyable" onClick={this.onClick} href="#">
-            {this.props.item.referenceNumber()} <i className="dis-hidden fa fa-clipboard"></i>
-          </a>
+          <Copyable text={this.props.item.referenceNumber()}/>
         </p>
       </div>
     );
