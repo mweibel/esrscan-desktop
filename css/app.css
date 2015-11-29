@@ -1,7 +1,8 @@
 html, body {
   width: 100%;
   font-size: 100%;
-  color: #0e0e0e;
+  color: #333333;
+  line-height: 1.4;
 }
 
 p {
@@ -19,6 +20,7 @@ p {
 
 .txt-big {
   font-size: 1.5rem;
+  line-height: 1.3;
 }
 
 .txt-grey {
@@ -34,14 +36,28 @@ p {
   border-collapse: collapse;
 }
 
+.phh {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
 .ptn {
   padding-top: 0;
 }
 
-.phh {
-  padding: 1.5rem 0;
-}
-
 .prs {
   padding-right: 0.2rem;
+}
+
+.copyable {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dis-hidden {
+  display: none;
+}
+
+.copyable:hover .fa {
+  display: inline-block;
 }

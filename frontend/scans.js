@@ -1,7 +1,8 @@
 /*global window */
 
 import React from 'react';
-import Scan from './scan.js';
+import ScanItem from './scan-item';
+import Scan from './scan';
 const ipc = window.require('ipc');
 
 export default class Scans extends React.Component {
@@ -16,7 +17,8 @@ export default class Scans extends React.Component {
 
   onNewScans(scan) {
     var scans = this.state.scans;
-    scans.push(scan);
+
+    scans.unshift(new Scan(scan));
 
     this.setState({
       scans: scans
@@ -33,9 +35,9 @@ export default class Scans extends React.Component {
     }
     return (
       <div className="bg-white no-cellspacing full-width">
-        {this.state.scans.map(function(scan) {
+        {this.state.scans.map(function(scan, index) {
           return (
-            <Scan key={scan.refNum} item={scan}/>
+            <ScanItem key={scan.rawReferenceNumber + scan.rawAccountNumber + scan.rawAmount} item={scan} index={index}/>
           );
         })}
       </div>

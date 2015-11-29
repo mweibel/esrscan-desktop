@@ -1,38 +1,36 @@
-import React from 'react';
+export default class Scan {
+  constructor(scan) {
+    this.rawReferenceNumber = scan.referenceNumber.replace(/^0+/, '');
+    this.rawAccountNumber = scan.accountNumber;
+    this.rawAmount = scan.amount;
+    this.referenceNumberCorrect = scan.referenceNumberCorrect;
+    this.amountCorrect = scan.amountCorrect;
+  }
 
-// the following code is pretty ugly.
-// should find a better way to do i18n
-const osLocale = require('os-locale');
+  referenceNumber() {
+    let str = '';
+    let l = this.rawReferenceNumber.length;
+    for(let i = l - 1; i >= 0; i--) {
+      str = this.rawReferenceNumber[i] + str;
+      if((l - i) % 5 === 0) {
+        str = ' ' + str;
+      }
+    }
+    return str;
+  }
 
-const availableLocales = ['en_US'];
-const defaultLocale = 'en_US';
+  accountNumber() {
+    let prefix = this.rawAccountNumber.substr(0, 2);
+    let center = this.rawAccountNumber.substr(2, this.rawAccountNumber.length).replace(/^0+/, '');
+    let postfix = this.rawAccountNumber[this.rawAccountNumber.length - 1];
 
-var locale = osLocale.sync();
-if (availableLocales.indexOf(locale) === -1) {
-  locale = defaultLocale;
-}
-const translation = require('./i18n/' + locale);
+    return [prefix, center, postfix].join('-');
+  }
 
-export default class Scan extends React.Component {
-  render () {
-    return (
-      <div className="row brd-bottom-grey phh txt-big">
-        <p>
-          <span className="txt-grey prs">{translation.accountNumber}:</span>
-          {this.props.item.accNum}
-        </p>
-        <p>
-          <span className="txt-grey prs">{translation.amount}:</span>
-          {this.props.item.amount ? 'CHF ' + this.props.item.amount : ''}
-        </p>
-        <p>
-          <span className="txt-grey prs">{translation.referenceNumber}:</span>
-          {this.props.item.refNum}
-        </p>
-      </div>
-    );
+  amount() {
+    if(!this.rawAmount) {
+      return 0.00;
+    }
+    return parseInt(this.rawAmount, 10).toFixed(2);
   }
 }
-Scan.propTypes = {
-  item: React.PropTypes.object.isRequired
-};
