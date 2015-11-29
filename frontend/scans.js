@@ -11,7 +11,7 @@ export default class Scans extends React.Component {
 
     this.state = {
       scans: [
-        new Scan({ referenceNumber: '002270306573720323241501007',
+        /*new Scan({ referenceNumber: '002270306573720323241501007',
           referenceNumberCorrect: true,
           accountNumber: '010115805',
           amount: 7070,
@@ -45,7 +45,7 @@ export default class Scans extends React.Component {
           referenceNumberCorrect: true,
           accountNumber: '010322486',
           amountCorrect: true
-        })
+        })*/
       ]
     };
     ipc.on('scan', this.onNewScans.bind(this));

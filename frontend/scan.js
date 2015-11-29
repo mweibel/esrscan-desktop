@@ -1,6 +1,6 @@
 export default class Scan {
   constructor(scan) {
-    this.rawReferenceNumber = scan.referenceNumber.replace(/^0+/, '');
+    this.rawReferenceNumber = scan.referenceNumber;
     this.rawAccountNumber = scan.accountNumber;
     this.rawAmount = scan.amount;
     this.referenceNumberCorrect = scan.referenceNumberCorrect;

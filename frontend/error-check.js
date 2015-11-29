@@ -3,7 +3,7 @@ import translation from './translation';
 
 export default class ErrorCheck extends React.Component {
   render() {
-    if (this.props.isCorrect) {
+    if (!this.props.isCorrect) {
       return (
         <a className="tooltip-link mlm">
           <i className="fa fa-exclamation-triangle txt-yellow"></i>
