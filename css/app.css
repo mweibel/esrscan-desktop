@@ -30,6 +30,9 @@ p {
 .txt-grey {
   color: rgb(148, 148, 151);
 }
+.txt-yellow {
+  color: #d3d600;
+}
 
 .brd-bottom-grey {
   border-bottom: rgb(200, 199, 204) solid 1px;
@@ -81,10 +84,9 @@ p {
 
 a.tooltip-link span.tooltip {
   position: absolute;
-  width:140px;
+  padding: 0 1rem;
   color: #FFFFFF;
   background: #000000;
-  height: 30px;
   line-height: 30px;
   text-align: center;
   visibility: hidden;

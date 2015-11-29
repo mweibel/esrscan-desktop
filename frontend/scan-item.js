@@ -1,6 +1,7 @@
 import React from 'react';
 import Scan from './scan';
 import Copyable from './copyable';
+import ErrorCheck from './error-check';
 import translation from './translation';
 
 export default class ScanItem extends React.Component {
@@ -20,11 +21,13 @@ export default class ScanItem extends React.Component {
           <p>
             <span className="txt-grey prs">{translation.amount}:</span>
             CHF <Copyable text={this.props.item.amount()}/>
+            <ErrorCheck isCorrect={this.props.item.amountCorrect}/>
           </p>
         ) : null}
         <p>
           <span className="txt-grey prs">{translation.referenceNumber}:</span>
           <Copyable text={this.props.item.referenceNumber()}/>
+          <ErrorCheck isCorrect={this.props.item.amountCorrect}/>
         </p>
       </div>
     );

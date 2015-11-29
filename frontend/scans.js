@@ -65,7 +65,7 @@ export default class Scans extends React.Component {
     if(this.state.scans.length == 0) {
       return (
         <div className="bg-white no-cellspacing full-width txt-big">
-          Start scanning
+          Waiting for invoices...
         </div>
       );
     }
