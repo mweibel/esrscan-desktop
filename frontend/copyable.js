@@ -13,7 +13,7 @@ export default class Copyable extends React.Component {
     };
   }
 
-  onClick(el) {
+  onClick() {
     clipboard.writeText(this.props.text.trim());
 
     this.setState({
