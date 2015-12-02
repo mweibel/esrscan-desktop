@@ -15,18 +15,18 @@ export default class ScanItem extends React.Component {
       <div className={classes}>
         <p>
           <span className="txt-grey prs">{translation.accountNumber}:</span>
-          <Copyable text={this.props.item.accountNumber()}/>
+          <Copyable text={this.props.item.accountNumber}/>
         </p>
-        {this.props.item.rawAmount ? (
+        {this.props.item.amount ? (
           <p>
             <span className="txt-grey prs">{translation.amount}:</span>
-            CHF <Copyable text={this.props.item.amount()}/>
+            CHF <Copyable text={this.props.item.amount}/>
             <ErrorCheck isCorrect={this.props.item.amountCorrect}/>
           </p>
         ) : null}
         <p>
           <span className="txt-grey prs">{translation.referenceNumber}:</span>
-          <Copyable text={this.props.item.referenceNumber()}/>
+          <Copyable text={this.props.item.referenceNumber}/>
           <ErrorCheck isCorrect={this.props.item.amountCorrect}/>
         </p>
       </div>

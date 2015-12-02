@@ -73,7 +73,7 @@ export default class Scans extends React.Component {
       <div className="bg-white no-cellspacing full-width">
         {this.state.scans.map(function(scan, index) {
           return (
-            <ScanItem key={scan.rawReferenceNumber + scan.rawAccountNumber + scan.rawAmount} item={scan} index={index}/>
+            <ScanItem key={scan.referenceNumber + scan.accountNumber + scan.amount} item={scan} index={index}/>
           );
         })}
       </div>
