@@ -1,7 +1,7 @@
 import React from 'react';
 import translation from './translation';
 
-/** global window */
+/* global window */
 const clipboard = window.require('clipboard');
 
 export default class Copyable extends React.Component {

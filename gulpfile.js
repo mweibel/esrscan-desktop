@@ -11,7 +11,7 @@ const source = require('vinyl-source-stream');
 const electron = require('electron-connect').server.create();
 
 var lintPaths = [
-  'frontend/**/*.jsx',
+  'frontend/**/*.js',
   'gulpfile.js',
   'main.js'
 ];
@@ -53,12 +53,12 @@ function compile(watch) {
   return rebundle();
 }
 
-function watch() {
+function watchit() {
   return compile(true);
 }
 
 gulp.task('build', function() { return compile(); });
-gulp.task('watch', function() { return watch(); });
+gulp.task('watch', function() { return watchit(); });
 
 gulp.watch(['./dist/app.js', './index.html', './css/app.css', './i18n/*.js'], electron.reload);
 gulp.watch('./main.js', electron.restart);

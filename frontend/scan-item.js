@@ -1,5 +1,4 @@
 import React from 'react';
-import Scan from './scan';
 import Copyable from './copyable';
 import ErrorCheck from './error-check';
 import translation from './translation';
@@ -27,13 +26,19 @@ export default class ScanItem extends React.Component {
         <p>
           <span className="txt-grey prs">{translation.referenceNumber}:</span>
           <Copyable text={this.props.item.referenceNumber}/>
-          <ErrorCheck isCorrect={this.props.item.amountCorrect}/>
+          <ErrorCheck isCorrect={this.props.item.referenceNumberCorrect}/>
         </p>
       </div>
     );
   }
 }
 ScanItem.propTypes = {
-  item: React.PropTypes.instanceOf(Scan),
+  item: React.PropTypes.shape({
+    accountNumber: React.PropTypes.string,
+    amount: React.PropTypes.string,
+    amountCorrect: React.PropTypes.bool,
+    referenceNumber: React.PropTypes.string,
+    referenceNumberCorrect: React.PropTypes.bool
+  }).isRequired,
   index: React.PropTypes.number
 };
