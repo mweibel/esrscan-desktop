@@ -1,5 +1,5 @@
 import React from 'react';
-import translation from './translation';
+import translation from './../translation';
 
 /* global window */
 const clipboard = window.require('clipboard');

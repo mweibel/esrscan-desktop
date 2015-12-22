@@ -1,7 +1,7 @@
 import React from 'react';
 import Copyable from './copyable';
 import ErrorCheck from './error-check';
-import translation from './translation';
+import translation from './../translation';
 
 export default class ScanItem extends React.Component {
   render () {

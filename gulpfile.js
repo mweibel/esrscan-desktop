@@ -3,6 +3,7 @@
 const gulp = require('gulp');
 const browserify = require('browserify');
 const babelify = require('babelify');
+const envify = require('envify');
 const watchify = require('watchify');
 const eslint = require('gulp-eslint');
 const sourcemaps = require('gulp-sourcemaps');
@@ -32,7 +33,7 @@ gulp.task('restart-electron', ['build'], function() {
 });
 
 function compile(watch) {
-  var bundler = browserify('./frontend/app.js', { debug: true }).transform(babelify);
+  var bundler = browserify('./frontend/index.js', { debug: true }).transform([babelify, envify]);
 
   if(watch) {
     bundler = watchify(bundler);

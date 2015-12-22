@@ -54,8 +54,8 @@ export function scans(state = testState, action) {
   switch (action.type) {
     case ADD_SCAN:
       return [
-        ...state,
-        newScan(action.scan)
+        newScan(action.scan),
+        ...state
       ];
     default:
       return state;

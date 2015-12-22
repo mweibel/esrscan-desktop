@@ -31,6 +31,7 @@
     "deep-freeze": "0.0.1",
     "electron-connect": "^0.3.3",
     "electron-prebuilt": "^0.34.0",
+    "envify": "^3.4.0",
     "eslint-plugin-react": "^3.10.0",
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.1.1",
