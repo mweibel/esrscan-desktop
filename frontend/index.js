@@ -6,10 +6,12 @@ import configureStore from './state';
 import { addScan } from './state/actions';
 import App from './components/app';
 
+require('../css/app.scss');
+
 let store = configureStore();
 
-const ipc = window.require('ipc');
-ipc.on('scan', function newScan(scan) {
+const ipc = window.require('electron').ipcRenderer;
+ipc.on('scan', function newScan(sender, scan) {
   store.dispatch(addScan(scan));
 });
 

@@ -1,2 +1,5 @@
 dist
 node_modules
+release
+build
+.DS_Store

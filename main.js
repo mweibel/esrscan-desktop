@@ -1,10 +1,17 @@
 'use strict';
 
-var app = require('app');  // Module to control application life.
-var BrowserWindow = require('browser-window');  // Module to create native browser window.
+const electron = require('electron');
+const app = electron.app;  // Module to control application life.
+const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
 
 // Report crashes to our server.
-require('crash-reporter').start();
+electron.crashReporter.start();
+
+if (process.env.NODE_ENV === 'development') {
+  require('electron-debug')({
+    showDevTools: true
+  });
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -26,7 +33,11 @@ app.on('ready', function() {
   mainWindow = new BrowserWindow({width: 800, height: 600});
 
   // and load the index.html of the app.
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
+  if(process.env.NODE_ENV === 'development') {
+    mainWindow.loadURL('http://localhost:8080/index.html');
+  } else {
+    mainWindow.loadURL('file://' + __dirname + '/index.html');
+  }
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function() {
@@ -36,55 +47,5 @@ app.on('ready', function() {
     mainWindow = null;
   });
 
-  if (process.env.NODE_ENV === 'dev') {
-    require('electron-connect').client.create(mainWindow);
-  }
-});
-
-console.log('starting stuff');
-
-var http = require('http');
-var os = require('os');
-var mdns = require('mdns');
-var address = require('network-address');
-
-function handleScan(request, response) {
-  var body = '';
-
-  request.on('data', function(data) {
-    body += data;
-    // prevent too much data, one kb should be enough.
-    if (body.length > 1024) {
-      request.connection.destroy();
-    }
-  });
-  request.on('end', function() {
-    var scan = JSON.parse(body);
-    console.log(scan);
-
-    mainWindow.webContents.send('scan', scan);
-
-    response.writeHead(200, {'Content-Type': 'application/json'});
-    response.end();
-  });
-}
-
-var server = http.createServer(function onRequest(request, response) {
-  if (request.method === 'POST' && request.url === '/scan') {
-    return handleScan(request, response);
-  }
-  response.writeHead(404, {'Content-Type': 'text/plain'});
-  response.end('Not Found');
-});
-
-server.listen(0, '0.0.0.0', function onStarted() {
-  console.log(arguments, server.address(), address(), os.hostname());
-  var options = {
-    networkInterface: address(),
-    host: os.hostname()
-  };
-  var ad = mdns.createAdvertisement(mdns.tcp('esrhttp'), server.address().port, options, function registered() {
-    console.log(arguments);
-  });
-  ad.start();
+  require('./server')(mainWindow.webContents);
 });

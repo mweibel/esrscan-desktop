@@ -1,11 +1,34 @@
 {
-  "name": "ESRScannerReceiver",
+  "name": "ESRScan",
   "version": "0.0.1",
   "description": "Receiver listening for scanned ESR data on the local network",
-  "main": "main.js",
+  "main": "dist/main.js",
   "scripts": {
     "start": "electron main.js",
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "mocha --compilers js:babel-core/register",
+    "lint": "./node_modules/.bin/eslint .",
+    "devstart": "NODE_ENV=development electron main.js & webpack-dev-server --hot --inline --content-base frontend/",
+
+    "clean": "rm -rf ./release",
+    "clean:osx": "rm -rf ./release/osx",
+    "clean:win": "rm -rf ./release/win",
+    "clean:linux": "rm -rf ./release/linux",
+    "clean:dist": "rm -rf ./dist",
+
+    "copy:dist": "cp ./frontend/index.html ./main.js ./server.js ./README.md dist",
+
+    "dist": "npm run clean:dist && npm run build:webpack && npm run copy:dist",
+
+    "pack": "npm run clean && npm run pack:osx && npm run pack:win && npm run pack:linux",
+    "pack:osx": "npm run clean:osx && node package.js --os=osx",
+    "pack:win": "npm run clean:win && node package.js --os=win",
+    "pack:linux": "npm run clean:linux && node package.js --os=linux",
+
+    "build": "npm run build:osx && npm run build:win && npm run build:linux",
+    "build:osx": "npm run pack:osx && electron-builder \"release/osx/ESRScan-darwin-x64/ESRScan.app\" --platform=osx --out=\"release/osx\" --config=builder.json",
+    "build:win": "npm run pack:win && electron-builder \"release/win/ESRScan-win32\" --platform=win --out=\"release/win\" --config=builder.json",
+
+    "build:webpack": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.prod.js --bail"
   },
   "repository": {
     "type": "git",
@@ -23,34 +46,45 @@
   },
   "homepage": "https://github.com/mweibel/ESRScannerReceiver",
   "devDependencies": {
+    "babel-core": "^6.4.0",
+    "babel-eslint": "^4.1.6",
+    "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.1.18",
-    "babelify": "^7.2.0",
-    "browserify": "^12.0.1",
+    "css-loader": "^0.23.1",
     "deep-freeze": "0.0.1",
-    "electron-connect": "^0.3.3",
-    "electron-prebuilt": "^0.34.0",
+    "electron-builder": "^2.5.0",
+    "electron-debug": "^0.5.1",
+    "electron-packager": "^5.2.0",
+    "electron-prebuilt": "^0.36.2",
     "envify": "^3.4.0",
+    "eslint": "^1.10.3",
+    "eslint-plugin-babel": "^3.0.0",
     "eslint-plugin-react": "^3.10.0",
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^1.1.1",
-    "gulp-sourcemaps": "^1.6.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "json-loader": "^0.5.4",
+    "minimist": "^1.2.0",
     "mocha": "^2.3.4",
-    "react-redux": "^4.0.2",
-    "redux": "^3.0.5",
+    "node-sass": "^3.4.2",
+    "react-hot-loader": "^1.3.0",
     "redux-devtools": "^3.0.0",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.1",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.6.1"
+    "sass-loader": "^3.1.2",
+    "source-map-support": "^0.4.0",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0",
+    "webpack-target-electron-renderer": "^0.3.0"
   },
   "dependencies": {
     "mdns": "^2.2.10",
     "network-address": "^1.0.0",
     "os-locale": "^1.4.0",
     "react": "^0.14.3",
-    "react-dom": "^0.14.3"
+    "react-dom": "^0.14.3",
+    "redux": "^3.0.5",
+    "react-redux": "^4.0.2"
   }
 }

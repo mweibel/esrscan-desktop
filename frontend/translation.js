@@ -9,4 +9,4 @@ var locale = osLocale.sync();
 if (availableLocales.indexOf(locale) === -1) {
   locale = defaultLocale;
 }
-module.exports = require('./i18n/' + locale);
+module.exports = require('../i18n/' + locale);
