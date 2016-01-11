@@ -1,7 +1,7 @@
 {
   "name": "ESRScan",
   "version": "0.0.1",
-  "description": "Receiver listening for scanned ESR data on the local network",
+  "description": "Desktop app for ESRScan",
   "main": "dist/main.js",
   "scripts": {
     "start": "NODE_ENV=development electron src/main.js & webpack-dev-server --hot --inline --content-base src/frontend/",
