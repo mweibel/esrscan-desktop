@@ -31,7 +31,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mweibel/ESRScannerServer.git"
+    "url": "git+https://github.com/mweibel/esrscan-desktop.git"
   },
   "keywords": [
     "ESR",
@@ -41,9 +41,9 @@
   "author": "Michael Weibel <michael.weibel@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mweibel/ESRScannerReceiver/issues"
+    "url": "https://github.com/mweibel/esrscan-desktop/issues"
   },
-  "homepage": "https://github.com/mweibel/ESRScannerReceiver",
+  "homepage": "https://github.com/mweibel/esrscan-desktop",
   "devDependencies": {
     "babel-core": "^6.4.0",
     "babel-eslint": "^4.1.6",
