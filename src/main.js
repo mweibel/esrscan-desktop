@@ -4,8 +4,13 @@ const electron = require('electron');
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
 
+const opts = {
+  productName: 'ESRScan Desktop',
+  companyName: 'Michael Weibel'
+};
+
 // Report crashes to our server.
-electron.crashReporter.start();
+electron.crashReporter.start(opts);
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')({

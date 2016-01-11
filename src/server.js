@@ -15,7 +15,6 @@ function handleScan(webContents, request, response) {
   });
   request.on('end', function() {
     const scan = JSON.parse(body);
-    console.log(scan);
 
     webContents.send('scan', scan);
 
@@ -34,14 +33,11 @@ function startServer(webContents) {
   });
 
   server.listen(0, '0.0.0.0', function onStarted() {
-    console.log(arguments, server.address(), address(), os.hostname());
     const options = {
       networkInterface: address(),
       host: os.hostname()
     };
-    const ad = mdns.createAdvertisement(mdns.tcp('esrhttp'), server.address().port, options, function registered() {
-      console.log(arguments);
-    });
+    const ad = mdns.createAdvertisement(mdns.tcp('esrhttp'), server.address().port, options, function registered() {});
     ad.start();
   });
 }
