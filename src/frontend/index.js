@@ -6,7 +6,7 @@ import configureStore from './state';
 import { addScan } from './state/actions';
 import App from './components/app';
 
-require('../css/app.scss');
+require('../../css/app.scss');
 
 let store = configureStore();
 

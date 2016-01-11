@@ -2,8 +2,8 @@ const path = require('path');;
 const execSync = require('child_process').execSync;
 const packager = require('electron-packager');
 const argv = require('minimist')(process.argv.slice(2));
-const pkgElectron = require('./node_modules/electron-prebuilt/package.json');
-const pkgInfo = require('./package.json');
+const pkgElectron = require('../node_modules/electron-prebuilt/package.json');
+const pkgInfo = require('../package.json');
 
 const osList = {
   'osx': {
@@ -27,7 +27,7 @@ const osList = {
 };
 const os = osList[argv.os];
 
-const shaHash = execSync('git rev-parse HEAD');
+const shaHash = execSync('git rev-parse HEAD').toString().substr(0, 7);
 
 const options = {
   dir: './',
@@ -54,7 +54,8 @@ const options = {
     '^/main\.js',
     '^/server\.js',
     '^/package\.js$',
-    'webpack\.*'
+    'webpack\.*',
+    '^/webpack/'
   ]
 };
 

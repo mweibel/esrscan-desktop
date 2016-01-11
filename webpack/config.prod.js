@@ -1,7 +1,6 @@
 const fs = require('fs');
 const webpack = require('webpack');
-const electronTargetRenderer = require('webpack-target-electron-renderer');
-const config = require('./webpack.config.base');
+const config = require('./config.base');
 
 config.module.loaders = config.module.loaders.concat([
   {
@@ -31,7 +30,5 @@ config.externals = {};
 fs.readdirSync('node_modules')
   .filter((module) => module !== '.bin')
   .forEach((module) => config.externals[module] = 'commonjs ' + module);
-
-config.target = electronTargetRenderer(config);
 
 module.exports = config;

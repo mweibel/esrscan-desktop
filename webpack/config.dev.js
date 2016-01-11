@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const config = require('./webpack.config.base');
+const config = require('./config.base');
 
 config.module.loaders = config.module.loaders.concat([
   {
@@ -17,8 +17,6 @@ config.devtool = 'sourcemap';
 
 config.plugins = config.plugins.concat([
   new webpack.HotModuleReplacementPlugin()
-  /*new webpack.BannerPlugin('require("source-map-support").install();',
-    { raw: true, entryOnly: false })*/
 ]);
 
 module.exports = config;
