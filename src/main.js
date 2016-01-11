@@ -6,7 +6,8 @@ const BrowserWindow = electron.BrowserWindow;  // Module to create native browse
 
 const opts = {
   productName: 'ESRScan Desktop',
-  companyName: 'Michael Weibel'
+  companyName: 'Michael Weibel',
+  submitURL: 'https://ecs.openflex.net'
 };
 
 // Report crashes to our server.
