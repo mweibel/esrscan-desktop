@@ -1,4 +1,4 @@
-const path = require('path');;
+const path = require('path');
 const execSync = require('child_process').execSync;
 const packager = require('electron-packager');
 const argv = require('minimist')(process.argv.slice(2));

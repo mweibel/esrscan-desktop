@@ -2,8 +2,8 @@
 
 import * as assert from 'assert';
 import deepFreeze from 'deep-freeze';
-import * as actions from '../frontend/state/actions';
-import { scans } from '../frontend/state/reducers';
+import * as actions from '../src/frontend/state/actions';
+import { scans } from '../src/frontend/state/reducers';
 
 describe('Add scan', function() {
   it('should add a scan to the list of scans', function() {
