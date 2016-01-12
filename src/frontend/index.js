@@ -15,6 +15,17 @@ ipc.on('scan', function newScan(sender, scan) {
   store.dispatch(addScan(scan));
 });
 
+const crashReporter = window.require('electron').crashReporter;
+
+const opts = {
+  productName: 'ESRScan Desktop (Renderer process)',
+  companyName: 'Michael Weibel',
+  submitURL: 'https://ecs.openflex.net'
+};
+
+// Report crashes to our server.
+crashReporter.start(opts);
+
 render((
   <App store={store} />
 ), document.getElementById('container'));
