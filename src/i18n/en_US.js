@@ -4,5 +4,5 @@ module.exports = {
   'amount': 'Amount',
   'copyToClipboard': 'Copy to clipboard',
   'copied': 'Copied!',
-  'incorrectScan': 'Scan might not be correct'
+  'incorrectScan': 'Please double check {fields} – a problem has been detected with the scan.'
 };

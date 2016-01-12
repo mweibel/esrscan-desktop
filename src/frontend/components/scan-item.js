@@ -5,29 +5,28 @@ import translation from './../translation';
 
 export default class ScanItem extends React.Component {
   render () {
-    var classes = 'row brd-bottom-grey phh txt-big';
+    var classes = 'row brd-bottom-grey phh';
     if(this.props.index === 0) {
       classes = 'ptn ' + classes;
     }
 
     return (
       <div className={classes}>
-        <p>
+        <ErrorCheck item={this.props.item}/>
+        <p className="txt-big">
           <Copyable label={translation.accountNumber} text={this.props.item.accountNumber}/>
         </p>
         {this.props.item.amount ? (
-          <p>
+          <p className="txt-big">
             <Copyable
               label={translation.amount}
               textToCopy={this.props.item.amount}
               text={'CHF ' + this.props.item.amount}
             />
-            <ErrorCheck isCorrect={this.props.item.amountCorrect}/>
           </p>
         ) : null}
-        <p>
+        <p className="txt-big">
           <Copyable label={translation.referenceNumber} text={this.props.item.referenceNumber}/>
-          <ErrorCheck isCorrect={this.props.item.referenceNumberCorrect}/>
         </p>
       </div>
     );
