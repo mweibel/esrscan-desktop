@@ -19,11 +19,15 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style', 'css!sass')
+      },
+      {
+        test: /\.(woff2?|eot|svg|ttf|otf)([\?]?.*)$/,
+        loader: 'url-loader?limit=100000'
       }
     ]
   },
   resolve: {
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.scss']
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.scss', '.woff', '.woff2', '.eot', '.svg', '.ttf', '.otf']
   },
 
   plugins: [
