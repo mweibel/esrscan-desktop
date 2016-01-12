@@ -40,7 +40,7 @@ const options = {
   'app-version': pkgInfo.version,
   'build-version': shaHash,
   prune: true,
-  asar: false,
+  asar: true,
   ignore: [
     '^/assets/?',
     '^/build/?',
