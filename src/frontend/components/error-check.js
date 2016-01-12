@@ -6,13 +6,14 @@ export default class ErrorCheck extends React.Component {
     if (!this.props.item.amountCorrect || !this.props.item.referenceNumberCorrect) {
 
       var fields = [];
+      // ugly, and probably not correct in all languages ;)
       if(!this.props.item.amountCorrect) {
-        fields.push(translation.amount);
+        fields.push(translation.amount.toLowerCase());
       }
       if(!this.props.item.referenceNumberCorrect) {
-        fields.push(translation.referenceNumber);
+        fields.push(translation.referenceNumber.toLowerCase());
       }
-      fields = fields.join(' and ');
+      fields = fields.join(' ' + translation.and + ' ');
 
       return (
         <span className="mbm">
