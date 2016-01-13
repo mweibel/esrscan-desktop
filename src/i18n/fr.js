@@ -1,4 +1,5 @@
 module.exports = {
+  'waitingForScans': 'Attente pour les scans...',
   'referenceNumber': 'Numéro de référence',
   'accountNumber': 'Numéro de compte',
   'amount': 'Montant',

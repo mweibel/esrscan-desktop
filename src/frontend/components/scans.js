@@ -1,13 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ScanItem from './scan-item';
+import translation from './../translation';
 
 class Scans extends React.Component {
   render() {
     if(this.props.scans.length === 0) {
       return (
         <div className="bg-white no-cellspacing full-width txt-big">
-          Waiting for invoices...
+          { translation.waitingForScans }
         </div>
       );
     }
