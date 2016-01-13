@@ -87,5 +87,5 @@
     "redux": "^3.0.5",
     "react-redux": "^4.0.2"
   },
-  "privaate": true
+  "private": true
 }
