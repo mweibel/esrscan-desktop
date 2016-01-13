@@ -1,0 +1,25 @@
+language: objectivec
+os:
+  - osx
+before_install:
+  - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
+  - source ~/.bashrc
+script:
+  - nvm install stable
+  - nvm use stable
+  - npm install
+
+  - npm run lint
+  - npm test
+
+  - npm run dist
+  - npm run pack:osx
+  - npm run build:osx
+
+deploy:
+  provider: releases
+  api_key:
+    secure: Tdx8f47u8yQCPpAWIv61WIfRVb6rpVmWMRe89Np7Q7XoYYG/Tk2CbYXdghoxbRw3cpHnq/I5DLSz7Fmt6qxpF+Khle2Ry5gIm3Wev1XVZNPocSnDZYqwake1iWxp6seFogYswLcsmqIx5G+GusX9qNe35GVzdOI1aAqFI6ypDartquBf9l3V9M//RJNRR39AZvHKsEo7Y/3zC7SJYjuCQIuGBc+QPGC67Aq0ADrpR/rtlWzAgvfN405dfxqM5EPRRt84Cj2QdfenGiBMUverrXgyaH5Ubm0Zk71nukJXiZB8/eTgkrepQzMCuMoCN9iGoRt018KP5HFstfjHJpW56lnaS5LJ8uaLAKun1l/TrhkHlNo29GmgAtSB8Wkzlobxr7AzDHp036vSLkIR4ovcBmDfMovCB330YStBKt5vIcnteOoxoVxcIfRdaIwL6o6kFbP0ydN3UO3nhjk+Fj4MyvwIjj6iQXMUKXdQmEMGGYKR6pLcgqG/Zv9BEyq+kHQDu/0WV5sz25GUfiTZ6YbiuHVMrI2rS00zb/AXClp9Xwdu0W0GTgYQTPNgK+qyl/bEIiIHjUDM2Y6I4/Nb40Ty1QmuO5IbgWR7cuO7VCNK4PU8e6AFzf0eLWJbaNdejKRTJ24JCj9JtDsPui7ENCDiksTqVe97VHJGSIyqR7EXCeY=
+  file: ./release/osx/ESRScan.dmg
+  on:
+    tags: true
