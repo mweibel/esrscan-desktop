@@ -24,3 +24,4 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+  after_deploy: ./scripts/travis-after-deploy.sh
