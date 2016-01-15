@@ -10,6 +10,9 @@ url="https://github.com/mweibel/esrscan-desktop/releases/download/${TRAVIS_TAG}/
 # replace old OSX dmg download link with new one
 sed -i '' 's#<a href=".*ESRScan.dmg"#<a href="'${url}'"#g' ./index.html
 
+git config --global user.name $GIT_AUTHOR_NAME
+git config --global user.email $GIT_AUTHOR_EMAIL
+
 git add index.html
 git commit -m 'Release ${TRAVIS_TAG}: update download links'
 git push upstream gh-pages
