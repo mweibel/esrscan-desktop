@@ -15,4 +15,4 @@ git config --global user.email $GIT_AUTHOR_EMAIL
 
 git add index.html
 git commit -m "Release ${TRAVIS_TAG}: update download links"
-git push upstream gh-pages
+git push -q upstream gh-pages 2>&1
