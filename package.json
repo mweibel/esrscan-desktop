@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=development electron src/main.js & webpack-dev-server --hot --inline --content-base src/frontend/",
     "test": "mocha --compilers js:babel-core/register",
-    "lint": "./node_modules/.bin/eslint .",
+    "lint": "./node_modules/.bin/standard",
     "clean": "rm -rf ./release",
     "clean:osx": "rm -rf ./release/osx",
     "clean:win": "rm -rf ./release/win",
@@ -66,6 +66,7 @@
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.1",
     "sass-loader": "^3.1.2",
+    "standard": "^5.4.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",

@@ -1,6 +1,6 @@
-const fs = require('fs');
-const webpack = require('webpack');
-const config = require('./config.base');
+const fs = require('fs')
+const webpack = require('webpack')
+const config = require('./config.base')
 
 config.module.loaders = config.module.loaders.concat([
   {
@@ -8,7 +8,7 @@ config.module.loaders = config.module.loaders.concat([
     loaders: ['babel'],
     exclude: /(node_modules)/
   }
-]);
+])
 
 config.plugins = config.plugins.concat([
   new webpack.optimize.OccurenceOrderPlugin(),
@@ -23,12 +23,12 @@ config.plugins = config.plugins.concat([
       screw_ie8: true // eslint-disable-line camelcase
     }
   })
-]);
+])
 
 // thx http://jlongster.com/Backend-Apps-with-Webpack--Part-I :
-config.externals = {};
+config.externals = {}
 fs.readdirSync('node_modules')
   .filter((module) => module !== '.bin')
-  .forEach((module) => config.externals[module] = 'commonjs ' + module);
+  .forEach((module) => config.externals[module] = 'commonjs ' + module)
 
-module.exports = config;
+module.exports = config

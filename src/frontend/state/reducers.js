@@ -1,20 +1,20 @@
 /**
  * Reducers
  */
-import { ADD_SCAN } from './actions';
-import { combineReducers } from 'redux';
+import { ADD_SCAN } from './actions'
+import { combineReducers } from 'redux'
 
-function newScan(data) {
+function newScan (data) {
   return {
     referenceNumber: data.referenceNumber,
     accountNumber: data.accountNumber,
     amount: data.amount,
     referenceNumberCorrect: data.referenceNumberCorrect,
     amountCorrect: data.amountCorrect
-  };
+  }
 }
 
-var initialState = [];
+var initialState = []
 if (process.env.NODE_ENV === 'development' && process.env.ESRSCAN_DEBUG) {
   initialState = [
     {
@@ -50,21 +50,21 @@ if (process.env.NODE_ENV === 'development' && process.env.ESRSCAN_DEBUG) {
       amountCorrect: true,
       referenceNumberCorrect: false
     }
-  ];
+  ]
 }
 
-export function scans(state = initialState, action) {
+export function scans (state = initialState, action) {
   switch (action.type) {
     case ADD_SCAN:
       return [
         newScan(action.scan),
         ...state
-      ];
+      ]
     default:
-      return state;
+      return state
   }
 }
 
 export const reducers = combineReducers({
   scans
-});
+})

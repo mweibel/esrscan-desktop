@@ -1,9 +1,9 @@
-const path = require('path');
-const execSync = require('child_process').execSync;
-const packager = require('electron-packager');
-const argv = require('minimist')(process.argv.slice(2));
-const pkgElectron = require('../node_modules/electron-prebuilt/package.json');
-const pkgInfo = require('../package.json');
+const path = require('path')
+const execSync = require('child_process').execSync
+const packager = require('electron-packager')
+const argv = require('minimist')(process.argv.slice(2))
+const pkgElectron = require('../node_modules/electron-prebuilt/package.json')
+const pkgInfo = require('../package.json')
 
 const osList = {
   'osx': {
@@ -24,10 +24,10 @@ const osList = {
     'out': 'linux',
     'icon': 'assets/linux/icon.ico'
   }
-};
-const os = osList[argv.os];
+}
+const os = osList[argv.os]
 
-const shaHash = execSync('git rev-parse HEAD').toString().substr(0, 7);
+const shaHash = execSync('git rev-parse HEAD').toString().substr(0, 7)
 
 const options = {
   dir: './',
@@ -57,18 +57,17 @@ const options = {
     'webpack\.*',
     '^/webpack/'
   ]
-};
+}
 
-packager(options, function done(err, appPaths) {
+packager(options, function done (err, appPaths) {
   if (err) {
     if (err.message) {
-      console.error(err.message);
+      console.error(err.message)
+    } else {
+      console.error(err, err.stack)
     }
-    else {
-      console.error(err, err.stack);
-    }
-    process.exit(1);
+    process.exit(1)
   }
 
-  console.log('Wrote new app to', appPaths[0]);
-});
+  console.log('Wrote new app to', appPaths[0])
+})

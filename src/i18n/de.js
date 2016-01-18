@@ -7,4 +7,4 @@ module.exports = {
   'copied': 'Kopiert!',
   'incorrectScan': 'Bitte die Felder {fields} überprüfen – beim Scan ist ein Fehler aufgetreten.',
   'and': 'und'
-};
+}

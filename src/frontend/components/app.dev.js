@@ -1,9 +1,9 @@
-import * as React from 'react'; //eslint-disable-line no-unused-vars
-import { Provider } from 'react-redux';
-import Scans from './scans.js';
-import DevTools from './devtools';
+import * as React from 'react' // eslint-disable-line no-unused-vars
+import { Provider } from 'react-redux'
+import Scans from './scans.js'
+import DevTools from './devtools'
 
-export default function({ store }) {
+export default function ({ store }) {
   return (
     <Provider store={store}>
       <div>
@@ -11,5 +11,5 @@ export default function({ store }) {
         <DevTools/>
       </div>
     </Provider>
-  );
+  )
 }

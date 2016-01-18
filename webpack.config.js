@@ -1,11 +1,11 @@
-const electronRenderer = require('webpack-target-electron-renderer');
+const electronRenderer = require('webpack-target-electron-renderer')
 
-var config;
+var config
 if (process.env.NODE_ENV === 'production') {
-  config = require('./webpack/config.prod.js');
+  config = require('./webpack/config.prod.js')
 } else {
-  config = require('./webpack/config.dev.js');
+  config = require('./webpack/config.dev.js')
 }
-config.target = electronRenderer(config);
+config.target = electronRenderer(config)
 
-module.exports = config;
+module.exports = config
