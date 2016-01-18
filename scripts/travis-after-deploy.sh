@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e # exit with nonzero exit code if anything fails
 
-git remote add upstream https://${GH_TOKEN}@github.com/mweibel/esrscan-desktop.git
+git remote add upstream https://${GH_OAUTH_TOKEN}@github.com/mweibel/esrscan-desktop.git
 git fetch upstream gh-pages
 git checkout gh-pages
 
