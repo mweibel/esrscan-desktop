@@ -1,6 +1,11 @@
-language: ruby
-os:
-  - osx
+language: objective-c
+
+branches:
+  except:
+    - "/^v\\d+\\.\\d+\\.\\d+$/"
+
+sudo: false
+
 before_install:
   - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
   - source ~/.bashrc
@@ -29,7 +34,8 @@ after_success:
 
 env:
   global:
-    secure: "bKpNlgt31ExmYwjbcLqZT/VYKMaPcFGGlXrvD1JV+rtygorqyxLGjd8Vd34cfHTkH5eKex8VtAnjolKray2BqWs0qID7SammQz32dYlhwIYfmnHBqHpz0kQqBvraIWEJDV84rAdnqeLrJ0bYUSYjExOznFoiOQQeUT9APHjsEKOKMRi59Ly9lv/4pebjYsGKJLxJSFTkUcLwl6DO/SPnBYlC0zvKkzs1LOS/Jzb3cW8zTE/yk8KUvvs05cJi1TIGqN/N8+dSxQH8RZJzmUpBvnMJQcYKYBsKn7HjoL2MiF2Q7PyMtGA8gjkCRFj9zj3DVWWJGqs+klOyOHXMqYi9RFzLlz3CK3Izvyf1D/OSGPcC6pFyvuaRFTbbexfpl9XWWuT19lCxvbkt7IZP4vViYEaU5SHP7bPxvwvr+fJxkIp3+mwE5LBfy1ml/Ab8Gu9BqTdn9BM5Wr99OBmB8eRcp4fVqtsH8BfLq5In2BVb24DvbIlsq56cGYhtL5X/Gdw/HZgVxdR7A5yiIEBCHlOIZ44de+QFQ1pS4wGVCw1+E/2az3Snq+ExTfN65zkaB6K6A6LnSmLe0ymCVimQL8MFuT+QoCt7n8P3bH8laKkL49SueVrNDWi5pjE9xSqFPgdTLV4NzBZY3tuXRskIrakRfuUTvi6hVfjSEY6dN1Xbn7A="
+    - NPM_TOKEN=dummy
+    - secure: "bKpNlgt31ExmYwjbcLqZT/VYKMaPcFGGlXrvD1JV+rtygorqyxLGjd8Vd34cfHTkH5eKex8VtAnjolKray2BqWs0qID7SammQz32dYlhwIYfmnHBqHpz0kQqBvraIWEJDV84rAdnqeLrJ0bYUSYjExOznFoiOQQeUT9APHjsEKOKMRi59Ly9lv/4pebjYsGKJLxJSFTkUcLwl6DO/SPnBYlC0zvKkzs1LOS/Jzb3cW8zTE/yk8KUvvs05cJi1TIGqN/N8+dSxQH8RZJzmUpBvnMJQcYKYBsKn7HjoL2MiF2Q7PyMtGA8gjkCRFj9zj3DVWWJGqs+klOyOHXMqYi9RFzLlz3CK3Izvyf1D/OSGPcC6pFyvuaRFTbbexfpl9XWWuT19lCxvbkt7IZP4vViYEaU5SHP7bPxvwvr+fJxkIp3+mwE5LBfy1ml/Ab8Gu9BqTdn9BM5Wr99OBmB8eRcp4fVqtsH8BfLq5In2BVb24DvbIlsq56cGYhtL5X/Gdw/HZgVxdR7A5yiIEBCHlOIZ44de+QFQ1pS4wGVCw1+E/2az3Snq+ExTfN65zkaB6K6A6LnSmLe0ymCVimQL8MFuT+QoCt7n8P3bH8laKkL49SueVrNDWi5pjE9xSqFPgdTLV4NzBZY3tuXRskIrakRfuUTvi6hVfjSEY6dN1Xbn7A="
 
 deploy:
   provider: releases
