@@ -4,17 +4,28 @@ os:
 before_install:
   - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
   - source ~/.bashrc
-script:
   - nvm install stable
   - nvm use stable
 
+install:
   - npm install
+
+before_script:
+  - npm prune
+
+script:
   - npm run lint
   - npm test
 
   - npm run dist
   - npm run pack:osx
   - npm run build:osx
+
+after_success:
+  - >
+    npm run semantic-release-prepare &&
+    export TRAVIS_TAG=v$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]') &&
+    npm run semantic-release-publish
 
 env:
   global:
@@ -28,4 +39,9 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+
 after_deploy: ./scripts/travis-after-deploy.sh
+
+cache:
+  directories:
+    - node_modules

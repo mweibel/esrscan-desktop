@@ -25,7 +25,10 @@
     "build": "npm run build:osx && npm run build:win && npm run build:linux",
     "build:osx": "npm run pack:osx && electron-builder \"release/osx/ESRScan-darwin-x64/ESRScan.app\" --platform=osx --out=\"release/osx\" --config=builder.json",
     "build:win": "npm run pack:win && electron-builder \"release/win/ESRScan-win32\" --platform=win --out=\"release/win\" --config=builder.json",
-    "build:webpack": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --bail"
+    "build:webpack": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --bail",
+
+    "semantic-release-prepare": "semantic-release pre",
+    "semantic-release-publish": "semantic-release post"
   },
   "repository": {
     "type": "git",
@@ -43,6 +46,7 @@
   },
   "homepage": "https://github.com/mweibel/esrscan-desktop",
   "devDependencies": {
+    "@semantic-release/last-release-git-tag": "git+https://github.com/swissmanu/last-release-git-tag.git#feat-initial-implementation",
     "babel-core": "^6.4.0",
     "babel-eslint": "^4.1.6",
     "babel-loader": "^6.2.1",
@@ -71,6 +75,7 @@
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.1",
     "sass-loader": "^3.1.2",
+    "semantic-release": "^4.3.5",
     "standard": "^5.4.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
@@ -92,5 +97,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "release": {
+    "getLastRelease": "./node_modules/@semantic-release/last-release-git-tag/dist/index.js"
   }
 }
