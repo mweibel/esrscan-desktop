@@ -46,6 +46,7 @@
     "babel-preset-react": "^6.1.18",
     "babel-preset-stage-0": "^6.1.18",
     "css-loader": "^0.23.1",
+    "cz-conventional-changelog": "^1.1.5",
     "deep-freeze": "0.0.1",
     "electron-builder": "^2.5.0",
     "electron-debug": "^0.5.1",
@@ -82,5 +83,10 @@
     "redux": "^3.0.5",
     "react-redux": "^4.0.2"
   },
-  "private": true
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
