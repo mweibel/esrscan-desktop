@@ -26,5 +26,5 @@ export default class ErrorCheck extends React.Component {
 }
 
 ErrorCheck.propTypes = {
-  item: React.PropTypes.object.isREquired
+  item: React.PropTypes.object.isRequired
 }
