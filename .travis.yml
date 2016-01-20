@@ -20,10 +20,8 @@ before_script:
 
   # already prepare here everything so that the package.json version gets increased.
   # ignore return code from prepare as we're not interested in that.
-  - >
-    (npm run semantic-release-prepare &&
-    export TRAVIS_TAG=v$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')) ||
-    true
+  - npm run semantic-release-prepare ; export PREPARE_RESULT=$?
+  - [ $PREPARE_RESULT == 1 ] && export TRAVIS_TAG=v$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
   - echo ${TRAVIS_TAG}
 
 script:
