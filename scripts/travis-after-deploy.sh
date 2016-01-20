@@ -2,6 +2,11 @@
 set -e # exit with nonzero exit code if anything fails
 
 git remote add upstream https://${GITHUB_TOKEN}@github.com/mweibel/esrscan-desktop.git
+
+git add package.json
+git commit -m "Version ${TRAVIS_TAG}"
+git push origin ${TRAVIS_BRANCH}
+
 git fetch upstream gh-pages
 git checkout gh-pages
 
