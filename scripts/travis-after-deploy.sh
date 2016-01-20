@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e # exit with nonzero exit code if anything fails
 
-git remote set-url origin https://${GITHUB_TOKEN}@github.com/mweibel/esrscan-desktop.git
+git remote set-url origin https://${GH_TOKEN}@github.com/mweibel/esrscan-desktop.git
 
 git add package.json
 git commit -m "Version ${TRAVIS_TAG}"
