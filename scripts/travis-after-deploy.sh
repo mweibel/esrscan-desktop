@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e # exit with nonzero exit code if anything fails
 
-git remote add upstream https://${GITHUB_TOKEN}@github.com/mweibel/esrscan-desktop.git
+git remote set-url origin https://${GITHUB_TOKEN}@github.com/mweibel/esrscan-desktop.git
 
 git add package.json
 git commit -m "Version ${TRAVIS_TAG}"
 git push origin ${TRAVIS_BRANCH}
 
-git fetch upstream gh-pages
+git fetch origin gh-pages
 git checkout gh-pages
 
 url="https://github.com/mweibel/esrscan-desktop/releases/download/${TRAVIS_TAG}/ESRScan.dmg"
@@ -20,4 +20,4 @@ git config --global user.email $GIT_AUTHOR_EMAIL
 
 git add index.html
 git commit -m "Release ${TRAVIS_TAG}: update download links"
-git push -q upstream gh-pages 2>&1
+git push -q origin gh-pages 2>&1
