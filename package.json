@@ -1,6 +1,5 @@
 {
   "name": "ESRScan",
-  "version": "0.0.2",
   "description": "Desktop app for ESRScan",
   "main": "dist/main.js",
   "scripts": {
