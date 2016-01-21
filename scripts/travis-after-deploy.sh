@@ -1,36 +1,32 @@
 #!/bin/bash
 set -e # exit with nonzero exit code if anything fails
 
-echo "-- Starting deployment"
+echo "-- Starting update of gh-pages for tag ${TRAVIS_TAG}"
 
-git remote set-url origin https://${GH_TOKEN}@github.com/mweibel/esrscan-desktop.git
+echo "--- Setting up local repository"
+
+git remote add upstream https://${GITHUB_TOKEN}@github.com/mweibel/esrscan-desktop.git
+
 git config --global user.name $GIT_AUTHOR_NAME
 git config --global user.email $GIT_AUTHOR_EMAIL
 
-echo "--- Creating commit for package.json update in branch ${TRAVIS_BRANCH}"
-
-git add package.json
-git commit -m "chore(package): Release version ${TRAVIS_TAG}"
-git push -q origin ${TRAVIS_BRANCH}
-
-echo "--- Updated package.json with latest release"
-
-echo "--- Starting update of gh-pages"
-
-git fetch origin gh-pages
+git fetch upstream gh-pages
 git checkout gh-pages
+
+echo "--- Updating index.html"
 
 url="https://github.com/mweibel/esrscan-desktop/releases/download/${TRAVIS_TAG}/ESRScan.dmg"
 
 # replace old OSX dmg download link with new one
 sed -i '' 's#<a href=".*ESRScan.dmg"#<a href="'${url}'"#g' ./index.html
 
-echo "--- Adding the following diff"
+echo "--- Changes to be commited:"
+echo "---------------------------"
 git diff
-echo "--- Creating commit"
+echo "---------------------------"
 
 git add index.html
-git commit -m "docs(gh-pages): Release ${TRAVIS_TAG}: update download links"
-git push -q origin gh-pages 2>&1
+git commit -m "chore(website): Deploy release ${TRAVIS_TAG}"
+git push -q upstream gh-pages 2>&1
 
-echo "-- Done deploying"
+echo "-- Finished update of gh-pages"

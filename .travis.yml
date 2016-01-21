@@ -23,10 +23,8 @@ before_script:
   - npm run semantic-release-prepare ; export PREPARE_RESULT=$?
   - >
     test $PREPARE_RESULT == 0 && export TRAVIS_TAG=v$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[",]//g' | tr -d '[[:space:]]')
-  - echo ${TRAVIS_TAG}
 
 script:
-  - echo ${TRAVIS_TAG}
   - npm run lint
   - npm test
 
@@ -35,7 +33,6 @@ script:
   - npm run build:osx
 
 after_success:
-  - echo ${TRAVIS_TAG}
   - npm run semantic-release-publish
 
 env:
