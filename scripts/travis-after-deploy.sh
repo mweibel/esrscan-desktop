@@ -25,7 +25,7 @@ sed -i '' 's#<a href=".*ESRScan.dmg"#<a href="'${url}'"#g' ./index.html
 
 echo "--- Changes to be commited:"
 echo "---------------------------"
-git diff
+git --no-pager diff
 echo "---------------------------"
 
 git add index.html
