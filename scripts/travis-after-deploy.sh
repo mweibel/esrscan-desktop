@@ -3,6 +3,9 @@ set -e # exit with nonzero exit code if anything fails
 
 echo "-- Starting update of gh-pages for tag ${TRAVIS_TAG}"
 
+# undoing pending change to package.json before switching branches
+git checkout -- package.json
+
 echo "--- Setting up local repository"
 
 git remote add upstream https://${GITHUB_TOKEN}@github.com/mweibel/esrscan-desktop.git
