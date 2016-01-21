@@ -8,7 +8,7 @@ git checkout -- package.json
 
 echo "--- Setting up local repository"
 
-git remote add upstream https://${GITHUB_TOKEN}@github.com/mweibel/esrscan-desktop.git
+git remote add upstream https://${GH_TOKEN}@github.com/mweibel/esrscan-desktop.git
 
 git config --global user.name $GIT_AUTHOR_NAME
 git config --global user.email $GIT_AUTHOR_EMAIL
