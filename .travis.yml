@@ -18,6 +18,10 @@ install:
 before_script:
   - npm prune
 
+  - openssl aes-256-cbc -k "$ENCRYPTION_KEY" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
+  - openssl aes-256-cbc -k "$ENCRYPTION_KEY" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
+  - ./scripts/add-key.sh
+
   # already prepare here everything so that the package.json version gets increased.
   # ignore return code from prepare as we're not interested in that.
   - npm run semantic-release-prepare ; export PREPARE_RESULT=$?
@@ -38,7 +42,12 @@ after_success:
 env:
   global:
     - NPM_TOKEN=dummy
+    # ghk
     - secure: "bKpNlgt31ExmYwjbcLqZT/VYKMaPcFGGlXrvD1JV+rtygorqyxLGjd8Vd34cfHTkH5eKex8VtAnjolKray2BqWs0qID7SammQz32dYlhwIYfmnHBqHpz0kQqBvraIWEJDV84rAdnqeLrJ0bYUSYjExOznFoiOQQeUT9APHjsEKOKMRi59Ly9lv/4pebjYsGKJLxJSFTkUcLwl6DO/SPnBYlC0zvKkzs1LOS/Jzb3cW8zTE/yk8KUvvs05cJi1TIGqN/N8+dSxQH8RZJzmUpBvnMJQcYKYBsKn7HjoL2MiF2Q7PyMtGA8gjkCRFj9zj3DVWWJGqs+klOyOHXMqYi9RFzLlz3CK3Izvyf1D/OSGPcC6pFyvuaRFTbbexfpl9XWWuT19lCxvbkt7IZP4vViYEaU5SHP7bPxvwvr+fJxkIp3+mwE5LBfy1ml/Ab8Gu9BqTdn9BM5Wr99OBmB8eRcp4fVqtsH8BfLq5In2BVb24DvbIlsq56cGYhtL5X/Gdw/HZgVxdR7A5yiIEBCHlOIZ44de+QFQ1pS4wGVCw1+E/2az3Snq+ExTfN65zkaB6K6A6LnSmLe0ymCVimQL8MFuT+QoCt7n8P3bH8laKkL49SueVrNDWi5pjE9xSqFPgdTLV4NzBZY3tuXRskIrakRfuUTvi6hVfjSEY6dN1Xbn7A="
+    # pk
+    - secure: "hEzib0KRJ6vi3vVPG9WjvdnRrgWTkxLgJJD9v6EwVGarbaUV0HLasskEFl/HAhBsiCxg7H1jNXGhrQRop47F5J15yrTNjNaYp6s9FJczUkClo6bGSU8VqJ/5BTqnx3EB1n8Hog9ZcSDWL9jZ2o5dyIJrcY8iV1FHyYFXmQF0+i7TwCGCgngNZFg39ADwt7tZE8LZK1muU/yvlqqDcHmf2gtV/CIbnmpuk79vxHRWYHUljrh2tPSMi4CVUUYOpy6O3f3u3awdPQqxeSC+GRM2ORmg2YHquaLMBla4wfpoI/kZ75tFjgBxflu3KNvPDL3s8DHaKAZkliR1i3nPTKg2apxWqv1ONSsHV17gzJa/2q628FaDGZjoI4LQrTswQFd/kk0bOPjjI4e/Vo1Zh5b+vIgl1Iu9EGbkua9v+Z/626go7blfsMtUsCnCTMWpSrUzgX55X/6t3SeuQd6oeTMotJkF2d1Z3RKD593ottEiZCHpj4p/HhqAybA15FP7/1KjoAJLwYg5/ud2Fmxnxx7DWSKlbGV1C7QrezW74ABbk8mp1kjNkR+D/SIArHNQNRpRHNxMhxDXWbt16A6p0s1DyKu28ReuSUcxD5IjitjnImXw0h+Y7xsmXNn2J92Wc3zt2SZdilIWoyrLi5hz6O0NzmW3KoUUiGgyp30qdYNRfLg="
+    # ek
+    - secure: "voxjbeFmj5dXUrb8TBwcAywDcxp15hLbfBif0iYnHPGsRbI6byFEKe17OTEwt23Cpa38EJu5v5MvBfEDrowFKgoIg8VILXmAGPDQnWT82q8c4V6kAWd0WYtF9QX38dFqIaaK1qS1YrUYsZ00/i56G++o50QO5WFHzeLnQMKTann5sKi3rlCUBDGX1s4FGpwSHk491Zm8zNjusmZN47sVpWBKfnKUezH5fKees9ldwJO1hWlgryXgnn2Zd6yENDFKGUHthvY1PCx98TQYEKBRpu3s+moxHWxxYeNJBF34mQT3CcN5R4nI9oKIytnFkDCl+KhQQU20djexuirkNPdc2/YVfchpGZp5z00xvZg6JVkRS+6OegnZRp3wffO8qJZSh36dyQ5lHXzB/rvkkK/Eiz09qz1iewOwai7ruPCpPEiJaK0sL7Z+QTSibRgMHPM7hbyAmIF8/DJizizHV5xxVT3v1H5yPI9IkRZiT/HNIRhzkjXdx3yQzfRGF6JaZBrKeaS5XNuAib2FLLb5cKF3r8wXwlDJjrTJ1wGQAEtrNtaIxKb26A70vHYF2b9KmNylFvqP73fyFdiZvzTVycFhB5CGjQU119DJL1S8wvuMRwoc4Es3Rzjt4+HeCqesh3T+yAj0f94uvk+q4tmGJI1HTQtBcBOKotYZ8WLob9DKPU0="
 
 deploy:
   provider: releases

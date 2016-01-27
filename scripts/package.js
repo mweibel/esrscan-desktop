@@ -39,6 +39,7 @@ const options = {
   version: pkgElectron.version,
   'app-version': pkgInfo.version,
   'build-version': shaHash,
+  sign: 'Developer ID Application: Michael Weibel (A3Q6Z5FR3P)',
   prune: true,
   asar: true,
   ignore: [
