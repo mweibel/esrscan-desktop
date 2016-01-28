@@ -1,7 +1,6 @@
 const http = require('http')
 const os = require('os')
 const mdns = require('mdns')
-const address = require('network-address')
 
 function handleScan (webContents, request, response) {
   var body = ''
@@ -34,7 +33,7 @@ function startServer (webContents) {
 
   server.listen(0, '0.0.0.0', function onStarted () {
     const options = {
-      networkInterface: address(),
+      interfaceIndex: 0,
       host: os.hostname()
     }
     const ad = mdns.createAdvertisement(mdns.tcp('esrhttp'), server.address().port, options, function registered () {})
