@@ -22,8 +22,8 @@
     "pack:linux": "npm run clean:linux && node scripts/package.js --os=linux",
 
     "build": "npm run build:osx && npm run build:win && npm run build:linux",
-    "build:osx": "npm run pack:osx && electron-builder \"release/osx/ESRScan-darwin-x64/ESRScan.app\" --platform=osx --out=\"release/osx\" --config=builder.json",
-    "build:win": "npm run pack:win && electron-builder \"release/win/ESRScan-win32\" --platform=win --out=\"release/win\" --config=builder.json",
+    "build:osx": "electron-builder \"release/osx/ESRScan-darwin-x64/ESRScan.app\" --platform=osx --out=\"release/osx\" --config=builder.json",
+    "build:win": "electron-builder \"release/win/ESRScan-win32\" --platform=win --out=\"release/win\" --config=builder.json",
     "build:webpack": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --bail",
 
     "semantic-release-prepare": "semantic-release pre",
