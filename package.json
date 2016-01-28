@@ -84,12 +84,11 @@
   },
   "dependencies": {
     "mdns": "^2.2.10",
-    "network-address": "^1.0.0",
     "os-locale": "^1.4.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "redux": "^3.0.5",
-    "react-redux": "^4.0.2"
+    "react-redux": "^4.0.2",
+    "redux": "^3.0.5"
   },
   "private": true,
   "config": {
