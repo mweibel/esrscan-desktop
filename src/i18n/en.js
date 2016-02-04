@@ -6,5 +6,7 @@ module.exports = {
   'copyToClipboard': 'Copy to clipboard',
   'copied': 'Copied!',
   'incorrectScan': 'Please double check {fields} – a problem has been detected with the scan.',
-  'and': 'and'
+  'and': 'and',
+  'connected': 'Connected',
+  'connectedSuccessfully': '{name} connected successfully.'
 }

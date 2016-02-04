@@ -2,7 +2,7 @@ const http = require('http')
 const os = require('os')
 const mdns = require('mdns')
 
-function handleScan (webContents, request, response) {
+function handlePost (webContents, request, response, cb) {
   var body = ''
 
   request.on('data', function (data) {
@@ -13,19 +13,35 @@ function handleScan (webContents, request, response) {
     }
   })
   request.on('end', function () {
-    const scan = JSON.parse(body)
-
-    webContents.send('scan', scan)
-
-    response.writeHead(200, {'Content-Type': 'application/json'})
-    response.end()
+    cb(body, response, webContents)
   })
+}
+
+function handleScan (body, response, webContents) {
+  const scan = JSON.parse(body)
+
+  webContents.send('scan', scan)
+
+  response.writeHead(200, {'Content-Type': 'application/json'})
+  response.end()
+}
+
+function handleConnect (body, response, webContents) {
+  const info = JSON.parse(body)
+
+  webContents.send('connection-info', info)
+
+  response.writeHead(200, {'Content-Type': 'application/json'})
+  response.end()
 }
 
 function startServer (webContents) {
   const server = http.createServer(function onRequest (request, response) {
     if (request.method === 'POST' && request.url === '/scan') {
-      return handleScan(webContents, request, response)
+      return handlePost(webContents, request, response, handleScan)
+    }
+    if (request.method === 'POST' && request.url === '/connect') {
+      return handlePost(webContents, request, response, handleConnect)
     }
     response.writeHead(404, {'Content-Type': 'text/plain'})
     response.end('Not Found')

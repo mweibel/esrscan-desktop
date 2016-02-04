@@ -6,5 +6,7 @@ module.exports = {
   'copyToClipboard': 'Kopieren',
   'copied': 'Kopiert!',
   'incorrectScan': 'Bitte die Felder {fields} überprüfen – beim Scan ist ein Fehler aufgetreten.',
-  'and': 'und'
+  'and': 'und',
+  'connected': 'Verbunden',
+  'connectedSuccessfully': 'Verbindung mit {name} erfolgreich.'
 }

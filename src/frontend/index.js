@@ -5,14 +5,20 @@ import { render } from 'react-dom'
 import configureStore from './state'
 import { addScan } from './state/actions'
 import App from './components/app'
+import translation from './translation'
+const ipc = window.require('electron').ipcRenderer
 
 require('../../assets/css/app.scss')
 
 let store = configureStore()
 
-const ipc = window.require('electron').ipcRenderer
 ipc.on('scan', function newScan (sender, scan) {
   store.dispatch(addScan(scan))
+})
+ipc.on('connection-info', function connectionInfo (sender, info) {
+  new window.Notification(translation.connected, { // eslint-disable-line no-new
+    body: translation.connectedSuccessfully.replace('{name}', info.name)
+  })
 })
 
 const crashReporter = window.require('electron').crashReporter
