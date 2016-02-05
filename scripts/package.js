@@ -38,6 +38,7 @@ const options = {
   icon: os.icon,
   version: pkgElectron.version,
   'app-version': pkgInfo.version,
+  'app-category-type': 'public.app-category.productivity',
   'build-version': shaHash,
   sign: 'Developer ID Application: Michael Weibel (A3Q6Z5FR3P)',
   prune: true,
