@@ -1,6 +1,6 @@
 const http = require('http')
 const os = require('os')
-const mdns = require('mdns')
+const Bonjour = require('bonjour')
 
 function handlePost (webContents, request, response, cb) {
   var body = ''
@@ -35,7 +35,7 @@ function handleConnect (body, response, webContents) {
   response.end()
 }
 
-function startServer (webContents) {
+function startServer (app, webContents) {
   const server = http.createServer(function onRequest (request, response) {
     if (request.method === 'POST' && request.url === '/scan') {
       return handlePost(webContents, request, response, handleScan)
@@ -48,12 +48,22 @@ function startServer (webContents) {
   })
 
   server.listen(0, '0.0.0.0', function onStarted () {
-    const options = {
-      interfaceIndex: 0,
-      host: os.hostname()
-    }
-    const ad = mdns.createAdvertisement(mdns.tcp('esrhttp'), server.address().port, options, function registered () {})
-    ad.start()
+    var bonjour = new Bonjour({
+      multicast: true
+    })
+    var service = bonjour.publish({
+      name: os.hostname().split('.')[0].split('-').join(' '),
+      port: server.address().port,
+      type: 'esrhttp',
+      protocol: 'tcp'
+    })
+
+    app.on('quit', function() {
+      service.stop()
+      bonjour.unpublishAll(function() {
+        bonjour.destroy()
+      })
+    })
   })
 }
 

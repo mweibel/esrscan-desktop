@@ -53,5 +53,5 @@ app.on('ready', function () {
     mainWindow = null
   })
 
-  require('./server')(mainWindow.webContents)
+  require('./server')(app, mainWindow.webContents)
 })
