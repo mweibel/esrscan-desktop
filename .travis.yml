@@ -33,8 +33,14 @@ script:
   - npm test
 
   - npm run dist
+  # OSX
   - npm run pack:osx
   - npm run build:osx
+  # Windows
+  - npm run pack:win
+  - npm run build:win
+  # Linux
+  - npm run pack:linux
 
 after_success:
   - npm run semantic-release-publish
