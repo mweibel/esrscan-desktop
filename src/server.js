@@ -58,9 +58,9 @@ function startServer (app, webContents) {
       protocol: 'tcp'
     })
 
-    app.on('quit', function() {
+    app.on('quit', function () {
       service.stop()
-      bonjour.unpublishAll(function() {
+      bonjour.unpublishAll(function () {
         bonjour.destroy()
       })
     })
