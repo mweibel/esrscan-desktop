@@ -14,6 +14,10 @@ before_install:
 
 install:
   - npm install
+  - brew install wine
+  - brew install makensis
+  - gem install fpm
+  - brew install gnu-tar
 
 before_script:
   - npm prune
@@ -33,6 +37,9 @@ script:
   - npm test
 
   - npm run dist
+
+  - ./scripts/travis-before-build.sh
+
   # OSX
   - npm run pack:osx
   - npm run build:osx
@@ -59,7 +66,10 @@ deploy:
   provider: releases
   api_key:
     secure: ${GH_TOKEN}
-  file: ./release/osx/ESRScan.dmg
+  file:
+    - ./release/osx/ESRScan.dmg
+    - ./release/win/ESRScan Setup.exe
+    - ./release/linux/esrscan-${TRAVIS_TAG}-amd64.deb
   skip_cleanup: true
   on:
     tags: true
