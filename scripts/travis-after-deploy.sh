@@ -3,8 +3,9 @@ set -e # exit with nonzero exit code if anything fails
 
 echo "-- Starting update of gh-pages for tag ${TRAVIS_TAG}"
 
-# undoing pending change to package.json before switching branches
+# undoing pending change to package.json/builder.json before switching branches
 git checkout -- package.json
+git checkout -- builder.json
 
 echo "--- Setting up local repository"
 
