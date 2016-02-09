@@ -49,6 +49,7 @@ script:
   # Windows
   - npm run pack:win
   - npm run build:win
+  - mv ./release/win/ESRScan\ Setup.exe ./release/win/ESRScanSetup.exe
   # Linux
   - npm run pack:linux
   - npm run build:linux
@@ -72,7 +73,7 @@ deploy:
     secure: ${GH_TOKEN}
   file:
     - ./release/osx/ESRScan.dmg
-    - ./release/win/ESRScan Setup.exe
+    - ./release/win/ESRScanSetup.exe
     - ./release/linux/esrscan-${TRAVIS_TAG}-amd64.deb
   skip_cleanup: true
   on:
