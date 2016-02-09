@@ -11,10 +11,16 @@
   },
   "win" : {
     "title" : "ESRScan",
-    "icon" : "assets/win/icon.ico"
+    "icon" : "assets/win/icon.ico",
+    "version": "dev"
   },
   "linux" : {
-    "title" : "ESRScan",
-    "icon" : "assets/linux/icon.ico"
+    "title" : "esrscan",
+    "version": "dev",
+    "comment": "Receives invoice scans from the ESRScan mobile app and displays them.",
+    "icon" : "assets/linux/icon.ico",
+    "target": "deb",
+    "executable": "esrscan",
+    "maintainer": "Michael Weibel <esrscan@openflex.net>"
   }
 }
