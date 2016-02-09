@@ -51,6 +51,7 @@ script:
   - npm run build:win
   # Linux
   - npm run pack:linux
+  - npm run build:linux
 
 after_success:
   - npm run semantic-release-publish
