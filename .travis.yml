@@ -84,3 +84,4 @@ after_deploy: ./scripts/travis-after-deploy.sh
 cache:
   directories:
     - node_modules
+    - /usr/local/Cellar
