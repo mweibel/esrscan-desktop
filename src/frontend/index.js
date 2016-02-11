@@ -24,7 +24,7 @@ ipc.on('connection-info', function connectionInfo (sender, info) {
 const crashReporter = window.require('electron').crashReporter
 
 const opts = {
-  productName: 'ESRScan Desktop (Renderer process)',
+  productName: 'ESRScan Desktop',
   companyName: 'Michael Weibel',
   submitURL: 'https://ecs.openflex.net'
 }
