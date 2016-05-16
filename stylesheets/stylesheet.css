@@ -13,14 +13,13 @@ h1, h2, h3 {
   font-weight: 400;
 }
 
-.page-header {
-  margin: 10px auto;
+.content {
+  margin: 0 auto;
   max-width: 600px;
 }
 
-.main-content {
-  margin: 0 auto;
-  max-width: 600px;
+.page-header {
+  margin: 10px 0;
 }
 
 .project-image {
