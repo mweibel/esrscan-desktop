@@ -22,11 +22,8 @@ h1, h2, h3 {
   margin: 10px 0;
 }
 
-.project-image {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 150px;
-  display: block;
+.howto {
+  border: 1px solid #ddd;
 }
 
 .site-footer {
