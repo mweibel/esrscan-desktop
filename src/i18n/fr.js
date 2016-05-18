@@ -1,12 +1,12 @@
 module.exports = {
-  'waitingForScans': 'Attente pour les scans...',
+  'waitingForScans': 'En attente de numérisations...',
   'referenceNumber': 'Numéro de référence',
   'accountNumber': 'Numéro de compte',
   'amount': 'Montant',
   'copyToClipboard': 'Copier',
   'copied': 'Copié!',
-  'incorrectScan': 'S\'il vous plaît vérifier le {fields} – une erreur est apparue.',
+  'incorrectScan': 'Veuillez vérifier le {fields} – une erreur est survenue.',
   'and': 'et',
   'connected': 'Connecté',
-  'connectedSuccessfully': '{name} réussi à connecter.'
+  'connectedSuccessfully': 'Connexion réussie avec {name}.'
 }
