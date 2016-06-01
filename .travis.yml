@@ -24,9 +24,7 @@ install:
 before_script:
   - npm prune
 
-  - openssl aes-256-cbc -k "$ENCRYPTION_KEY" -in scripts/certs/dist.cer.enc -d -a -out scripts/certs/dist.cer
-  - openssl aes-256-cbc -k "$ENCRYPTION_KEY" -in scripts/certs/dist.p12.enc -d -a -out scripts/certs/dist.p12
-  - ./scripts/add-key.sh
+  - ./scripts/certificates.sh
 
   # already prepare here everything so that the package.json version gets increased.
   # ignore return code from prepare as we're not interested in that.
