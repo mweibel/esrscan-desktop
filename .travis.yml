@@ -6,8 +6,6 @@ matrix:
     - os: osx
       env: ESRSCAN_BUILD=osx
     - os: linux
-      env: ESRSCAN_BUILD=linux
-    - os: linux
       env: ESRSCAN_BUILD=windows
 
 branches:
@@ -52,6 +50,9 @@ after_success:
 
 env:
   global:
+    # for the default build which is linux. Will be overwritten by windows/osx builds
+    - ESRSCAN_BUILD=linux
+
     - NPM_TOKEN=dummy
     # ghk
     - secure: "bKpNlgt31ExmYwjbcLqZT/VYKMaPcFGGlXrvD1JV+rtygorqyxLGjd8Vd34cfHTkH5eKex8VtAnjolKray2BqWs0qID7SammQz32dYlhwIYfmnHBqHpz0kQqBvraIWEJDV84rAdnqeLrJ0bYUSYjExOznFoiOQQeUT9APHjsEKOKMRi59Ly9lv/4pebjYsGKJLxJSFTkUcLwl6DO/SPnBYlC0zvKkzs1LOS/Jzb3cW8zTE/yk8KUvvs05cJi1TIGqN/N8+dSxQH8RZJzmUpBvnMJQcYKYBsKn7HjoL2MiF2Q7PyMtGA8gjkCRFj9zj3DVWWJGqs+klOyOHXMqYi9RFzLlz3CK3Izvyf1D/OSGPcC6pFyvuaRFTbbexfpl9XWWuT19lCxvbkt7IZP4vViYEaU5SHP7bPxvwvr+fJxkIp3+mwE5LBfy1ml/Ab8Gu9BqTdn9BM5Wr99OBmB8eRcp4fVqtsH8BfLq5In2BVb24DvbIlsq56cGYhtL5X/Gdw/HZgVxdR7A5yiIEBCHlOIZ44de+QFQ1pS4wGVCw1+E/2az3Snq+ExTfN65zkaB6K6A6LnSmLe0ymCVimQL8MFuT+QoCt7n8P3bH8laKkL49SueVrNDWi5pjE9xSqFPgdTLV4NzBZY3tuXRskIrakRfuUTvi6hVfjSEY6dN1Xbn7A="
