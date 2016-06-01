@@ -1,4 +1,14 @@
-language: objective-c
+language: node_js
+node_js: node
+
+matrix:
+  include:
+    - os: osx
+      env: ESRSCAN_BUILD=osx
+    - os: linux
+      env: ESRSCAN_BUILD=linux
+    - os: linux
+      env: ESRSCAN_BUILD=windows
 
 branches:
   except:
@@ -7,20 +17,11 @@ branches:
 sudo: false
 
 before_install:
-  - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.1/install.sh | bash
-  - source ~/.bashrc
-
-  - nvm install stable
-  - nvm use stable
-
-  - brew update
+  - ./scripts/before-install.sh
 
 install:
   - npm install
-  - brew install wine
-  - brew install makensis
-  - gem install fpm
-  - brew install gnu-tar
+  - ./scripts/install.sh
 
 before_script:
   - npm prune
@@ -42,19 +43,11 @@ script:
   - npm run dist
 
   - ./scripts/travis-before-build.sh
-
-  # OSX
-  - npm run pack:osx
-  - npm run build:osx
-  # Windows
-  - npm run pack:win
-  - npm run build:win
-  - mv ./release/win/ESRScan\ Setup.exe ./release/win/ESRScanSetup.exe
-  # Linux
-  - npm run pack:linux
-  - npm run build:linux
+  - ./scripts/build.sh
 
 after_success:
+  - python scripts/travis_after_all.py
+  - export $(cat .to_export_back) &> /dev/null
   - npm run semantic-release-publish
 
 env:
