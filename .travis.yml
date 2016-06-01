@@ -13,7 +13,7 @@ branches:
   except:
     - "/^v\\d+\\.\\d+\\.\\d+$/"
 
-sudo: true
+sudo: required
 
 before_install:
   - ./scripts/before-install.sh
