@@ -5,6 +5,7 @@ matrix:
   include:
     - os: osx
       env: ESRSCAN_BUILD=osx
+      sudo: false
     - os: linux
       env: ESRSCAN_BUILD=windows
 
@@ -12,7 +13,7 @@ branches:
   except:
     - "/^v\\d+\\.\\d+\\.\\d+$/"
 
-sudo: false
+sudo: true
 
 before_install:
   - ./scripts/before-install.sh
