@@ -17,9 +17,6 @@ sudo: required
 
 before_install:
   - ./scripts/before-install.sh
-
-install:
-  - npm install
   - ./scripts/install.sh
 
 before_script:
