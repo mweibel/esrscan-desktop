@@ -73,7 +73,7 @@ deploy:
     overwrite: true
     on:
       tags: true
-      condition: $ESRSCAN_BUILD" = "osx"
+      condition: $ESRSCAN_BUILD = "osx"
   - provider: releases
     api_key:
       secure: ${GH_TOKEN}
@@ -82,7 +82,7 @@ deploy:
     overwrite: true
     on:
       tags: true
-      condition: $ESRSCAN_BUILD" = "windows"
+      condition: $ESRSCAN_BUILD = "windows"
   - provider: releases
     api_key:
       secure: ${GH_TOKEN}
@@ -91,7 +91,7 @@ deploy:
     overwrite: true
     on:
       tags: true
-      condition: $ESRSCAN_BUILD" = "linux"
+      condition: $ESRSCAN_BUILD = "linux"
 
 
 after_deploy: ./scripts/travis-after-deploy.sh
