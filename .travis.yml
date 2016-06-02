@@ -5,7 +5,6 @@ matrix:
   include:
     - os: osx
       env: ESRSCAN_BUILD=osx
-      sudo: false
     - os: linux
       env: ESRSCAN_BUILD=windows
 
@@ -66,17 +65,34 @@ env:
     - secure: "voxjbeFmj5dXUrb8TBwcAywDcxp15hLbfBif0iYnHPGsRbI6byFEKe17OTEwt23Cpa38EJu5v5MvBfEDrowFKgoIg8VILXmAGPDQnWT82q8c4V6kAWd0WYtF9QX38dFqIaaK1qS1YrUYsZ00/i56G++o50QO5WFHzeLnQMKTann5sKi3rlCUBDGX1s4FGpwSHk491Zm8zNjusmZN47sVpWBKfnKUezH5fKees9ldwJO1hWlgryXgnn2Zd6yENDFKGUHthvY1PCx98TQYEKBRpu3s+moxHWxxYeNJBF34mQT3CcN5R4nI9oKIytnFkDCl+KhQQU20djexuirkNPdc2/YVfchpGZp5z00xvZg6JVkRS+6OegnZRp3wffO8qJZSh36dyQ5lHXzB/rvkkK/Eiz09qz1iewOwai7ruPCpPEiJaK0sL7Z+QTSibRgMHPM7hbyAmIF8/DJizizHV5xxVT3v1H5yPI9IkRZiT/HNIRhzkjXdx3yQzfRGF6JaZBrKeaS5XNuAib2FLLb5cKF3r8wXwlDJjrTJ1wGQAEtrNtaIxKb26A70vHYF2b9KmNylFvqP73fyFdiZvzTVycFhB5CGjQU119DJL1S8wvuMRwoc4Es3Rzjt4+HeCqesh3T+yAj0f94uvk+q4tmGJI1HTQtBcBOKotYZ8WLob9DKPU0="
 
 deploy:
-  provider: releases
-  api_key:
-    secure: ${GH_TOKEN}
-  file:
-    - if [[ "$ESRSCAN_BUILD" == "osx" ]]; then ./release/osx/ESRScan.dmg ; fi
-    - if [[ "$ESRSCAN_BUILD" == "windows" ]]; then ./release/win/ESRScanSetup.exe ; fi
-    - if [[ "$ESRSCAN_BUILD" == "linux" ]]; then ./release/linux/esrscan-${TRAVIS_TAG}-amd64.deb ; fi
-  skip_cleanup: true
-  overwrite: true
-  on:
-    tags: true
+  - provider: releases
+    api_key:
+      secure: ${GH_TOKEN}
+    file: ./release/osx/ESRScan.dmg
+    skip_cleanup: true
+    overwrite: true
+    on:
+      tags: true
+      condition: $ESRSCAN_BUILD" = "osx"
+  - provider: releases
+    api_key:
+      secure: ${GH_TOKEN}
+    file: ./release/win/ESRScanSetup.exe
+    skip_cleanup: true
+    overwrite: true
+    on:
+      tags: true
+      condition: $ESRSCAN_BUILD" = "windows"
+  - provider: releases
+    api_key:
+      secure: ${GH_TOKEN}
+    file: ./release/linux/esrscan-${TRAVIS_TAG}-amd64.deb
+    skip_cleanup: true
+    overwrite: true
+    on:
+      tags: true
+      condition: $ESRSCAN_BUILD" = "linux"
+
 
 after_deploy: ./scripts/travis-after-deploy.sh
 
