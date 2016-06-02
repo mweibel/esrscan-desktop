@@ -1,8 +1,7 @@
 import React from 'react'
 import translation from './../translation'
 
-/* global window */
-const clipboard = window.require('clipboard')
+const {clipboard} = require('electron')
 
 export default class Copyable extends React.Component {
   constructor () {

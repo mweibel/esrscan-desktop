@@ -12,9 +12,9 @@ export default class ScanItem extends React.Component {
 
     return (
       <div className={classes}>
-        <ErrorCheck item={this.props.item}/>
+        <ErrorCheck item={this.props.item} />
         <p className='txt-big'>
-          <Copyable label={translation.accountNumber} text={this.props.item.accountNumber}/>
+          <Copyable label={translation.accountNumber} text={this.props.item.accountNumber} />
         </p>
         {this.props.item.amount ? (
           <p className='txt-big'>
@@ -26,7 +26,7 @@ export default class ScanItem extends React.Component {
           </p>
         ) : null}
         <p className='txt-big'>
-          <Copyable label={translation.referenceNumber} text={this.props.item.referenceNumber}/>
+          <Copyable label={translation.referenceNumber} text={this.props.item.referenceNumber} />
         </p>
       </div>
     )

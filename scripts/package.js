@@ -51,12 +51,12 @@ const options = {
     '^/i18n/?',
     '^/release/?',
     '^/test/?',
-    '^/\/\.*/',
+    '^/\/\.*/', // eslint-disable-line no-useless-escape
     '/builder.json',
-    '^/main\.js',
-    '^/server\.js',
-    '^/package\.js$',
-    'webpack\.*',
+    '^/main\.js', // eslint-disable-line no-useless-escape
+    '^/server\.js', // eslint-disable-line no-useless-escape
+    '^/package\.js$', // eslint-disable-line no-useless-escape
+    'webpack\.*', // eslint-disable-line no-useless-escape
     '^/webpack/'
   ]
 }

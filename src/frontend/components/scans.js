@@ -8,7 +8,7 @@ class Scans extends React.Component {
     if (this.props.scans.length === 0) {
       return (
         <div className='bg-white no-cellspacing full-width txt-big'>
-          { translation.waitingForScans }
+          {translation.waitingForScans}
         </div>
       )
     }
@@ -16,7 +16,7 @@ class Scans extends React.Component {
       <div className='bg-white no-cellspacing full-width'>
         {this.props.scans.map(function (scan, index) {
           return (
-            <ScanItem key={scan.referenceNumber + scan.accountNumber + scan.amount} item={scan} index={index}/>
+            <ScanItem key={scan.referenceNumber + scan.accountNumber + scan.amount} item={scan} index={index} />
           )
         })}
       </div>

@@ -7,8 +7,8 @@ export default function ({ store }) {
   return (
     <Provider store={store}>
       <div>
-        <Scans/>
-        <DevTools/>
+        <Scans />
+        <DevTools />
       </div>
     </Provider>
   )
