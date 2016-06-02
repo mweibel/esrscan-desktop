@@ -41,8 +41,16 @@ script:
 
 after_success:
   - python scripts/travis_after_all.py
-  - export $(cat .to_export_back) &> /dev/null
-  - npm run semantic-release-publish
+  - export $(cat .to_export_back)
+  - |
+      if [ "$BUILD_LEADER" = "YES" ]; then
+        if [ "$BUILD_AGGREGATE_STATUS" = "others_succeeded" ]; then
+          echo "All jobs succeeded! PUBLISHING..."
+          npm run semantic-release-publish
+        else
+          echo "Some jobs failed"
+        fi
+      fi
 
 env:
   global:
@@ -62,10 +70,11 @@ deploy:
   api_key:
     secure: ${GH_TOKEN}
   file:
-    - ./release/osx/ESRScan.dmg
-    - ./release/win/ESRScanSetup.exe
-    - ./release/linux/esrscan-${TRAVIS_TAG}-amd64.deb
+    - if [[ "$ESRSCAN_BUILD" == "osx" ]]; then ./release/osx/ESRScan.dmg ; fi
+    - if [[ "$ESRSCAN_BUILD" == "windows" ]]; then ./release/win/ESRScanSetup.exe ; fi
+    - if [[ "$ESRSCAN_BUILD" == "linux" ]]; then ./release/linux/esrscan-${TRAVIS_TAG}-amd64.deb ; fi
   skip_cleanup: true
+  overwrite: true
   on:
     tags: true
 
