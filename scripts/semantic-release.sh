@@ -9,7 +9,7 @@ fi
 URL='https://github.com/mweibel/esrscan-desktop/releases/tag/${TRAVIS_TAG}'
 HTTP_CODE=$(curl --write-out %{http_code} --silent --output /dev/null "$URL")
 
-if [ $HTTP_CODE = "404"]; then
+if [ $HTTP_CODE = "404" ]; then
   echo "-- Release doesn't exist yet, running semantic release."
   npm run semantic-release-publish
 fi
