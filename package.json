@@ -2,7 +2,7 @@
   "name": "ESRScan",
   "description": "Desktop app for ESRScan",
   "main": "src/main.js",
-  "version": "dev",
+  "version": "0.0.1",
   "scripts": {
     "start": "NODE_ENV=development electron src/main.js & webpack-dev-server --hot --inline --content-base src/frontend/",
     "test": "mocha --compilers js:babel-core/register",
