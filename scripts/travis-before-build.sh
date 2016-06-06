@@ -13,6 +13,6 @@ fi
 
 echo "-- Setting builder version for windows & linux to ${TRAVIS_TAG}"
 
-sed -i 's#"version": "dev"#"version": "'${TRAVIS_TAG}'"#g' builder.json
+sed -i 's#"version": "dev"#"version": "'${TRAVIS_TAG}'"#g' package.json
 
 echo "-- Finished update of builder version"
