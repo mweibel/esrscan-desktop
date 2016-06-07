@@ -1,0 +1,18 @@
+{
+  "name": "ESRScan",
+  "description": "Desktop app for ESRScan",
+  "version": "0.0.1-dev",
+  "author": "Michael Weibel <esrscan@openflex.net>",
+  "license": "MIT",
+  "main": "./out/index.js",
+  "homepage": "https://github.com/mweibel/esrscan-desktop",
+  "dependencies": {
+    "bonjour": "^3.2.0",
+    "os-locale": "^1.4.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-redux": "^4.0.2",
+    "redux": "^3.0.5"
+  },
+  "private": true
+}

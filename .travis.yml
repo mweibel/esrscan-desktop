@@ -13,6 +13,7 @@ branches:
     - "/^v\\d+\\.\\d+\\.\\d+$/"
 
 sudo: required
+dist: trusty
 
 before_install:
   - ./scripts/before-install.sh
@@ -33,7 +34,7 @@ script:
   - npm run lint
   - npm test
 
-  - npm run dist
+  - npm run compile
 
   - ./scripts/travis-before-build.sh
   - ./scripts/build.sh

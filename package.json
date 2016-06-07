@@ -1,20 +1,18 @@
 {
   "name": "ESRScan",
   "description": "Desktop app for ESRScan",
-  "main": "src/main.js",
-  "version": "0.0.1",
   "scripts": {
+    "postinstall": "install-app-deps",
     "start": "NODE_ENV=development electron src/main.js & webpack-dev-server --hot --inline --content-base src/frontend/",
     "test": "mocha --compilers js:babel-core/register",
     "lint": "./node_modules/.bin/standard",
-    "clean": "rm -rf ./release",
-    "clean:osx": "rm -rf ./release/osx",
-    "clean:win": "rm -rf ./release/win",
-    "clean:linux": "rm -rf ./release/linux",
-    "clean:dist": "rm -rf ./dist",
-    "dist": "npm run clean:dist && npm run build:webpack && npm run copy:dist",
-    "build:webpack": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --bail",
-    "copy:dist": "cp ./src/frontend/index.html ./src/main.js ./src/server.js ./README.md dist",
+    "clean": "rm -rf ./dist ./app/out",
+    "clean:osx": "rm -rf ./dist/osx",
+    "clean:win": "rm -rf ./dist/win",
+    "clean:linux": "rm -rf ./dist/linux",
+    "compile": "npm run clean && npm run compile:webpack && npm run copy:compiled",
+    "compile:webpack": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --bail",
+    "copy:compiled": "cp ./src/frontend/index.html ./src/index.js ./src/server.js ./README.md ./app/out",
     "build": "npm run build:osx && npm run build:win && npm run build:linux",
     "build:osx": "npm run clean:osx && build --osx --publish=never",
     "build:win": "npm run clean:win && build --win --publish=never",
@@ -23,28 +21,20 @@
     "semantic-release-publish": "semantic-release post"
   },
   "build": {
+    "app-bundle-id": "net.openflex.desktop.ESRScan",
     "app-category-type": "public.app-category.productivity",
     "osx" : {
       "title": "ESRScan",
-      "background": "assets/osx/installer.png",
-      "icon": "assets/osx/app-icon.icns",
       "icon-size": 80,
+      "identity": "Michael Weibel (A3Q6Z5FR3P)",
       "contents": [
         { "x": 460, "y": 250, "type": "link", "path": "/Applications" },
         { "x": 180, "y": 250, "type": "file" }
       ]
     },
-    "win" : {
-      "title" : "ESRScan",
-      "icon" : "assets/win/icon.ico"
-    },
     "linux" : {
-      "title" : "esrscan",
-      "comment": "Receives invoice scans from the ESRScan mobile app and displays them.",
-      "icon" : "assets/linux/icon.ico",
-      "target": "deb",
-      "executable": "esrscan",
-      "maintainer": "Michael Weibel <esrscan@openflex.net>"
+      "synopsis": "Receives invoice scans from the ESRScan mobile app and displays them.",
+      "target": "deb"
     }
   },
   "repository": {
@@ -56,7 +46,7 @@
     "Einzahlungsschein",
     "Bonjour"
   ],
-  "author": "Michael Weibel <michael.weibel@gmail.com>",
+  "author": "Michael Weibel <esrscan@openflex.ne>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mweibel/esrscan-desktop/issues"
