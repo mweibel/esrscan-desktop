@@ -6,27 +6,22 @@
     "start": "NODE_ENV=development electron src/main.js & webpack-dev-server --hot --inline --content-base src/frontend/",
     "test": "mocha --compilers js:babel-core/register",
     "lint": "./node_modules/.bin/standard",
-
     "clean": "rm -rf ./release",
     "clean:osx": "rm -rf ./release/osx",
     "clean:win": "rm -rf ./release/win",
     "clean:linux": "rm -rf ./release/linux",
     "clean:dist": "rm -rf ./dist",
-
     "dist": "npm run clean:dist && npm run build:webpack && npm run copy:dist",
     "build:webpack": "NODE_ENV=production ./node_modules/.bin/webpack --config webpack.config.js --bail",
     "copy:dist": "cp ./src/frontend/index.html ./src/main.js ./src/server.js ./README.md dist",
-
     "pack": "npm run clean && npm run pack:osx && npm run pack:win && npm run pack:linux",
     "pack:osx": "npm run clean:osx && node scripts/package.js --os=osx",
     "pack:win": "npm run clean:win && node scripts/package.js --os=win",
     "pack:linux": "npm run clean:linux && node scripts/package.js --os=linux",
-
     "build": "npm run build:osx && npm run build:win && npm run build:linux",
     "build:osx": "electron-builder \"release/osx/ESRScan-darwin-x64/ESRScan.app\" --platform=osx --out=\"release/osx\" --config=builder.json",
     "build:win": "electron-builder \"release/win/ESRScan-win32-ia32\" --platform=win --out=\"release/win\" --config=builder.json",
     "build:linux": "electron-builder \"release/linux/ESRScan-linux-x64\" --platform=linux --out=\"release/linux\" --config=builder.json",
-
     "semantic-release-prepare": "semantic-release pre",
     "semantic-release-publish": "semantic-release post"
   },
@@ -56,7 +51,7 @@
     "css-loader": "^0.23.1",
     "cz-conventional-changelog": "^1.1.5",
     "deep-freeze": "0.0.1",
-    "electron-builder": "^2.7.1",
+    "electron-builder": "^5.0.0",
     "electron-debug": "^0.5.1",
     "electron-packager": "^5.2.0",
     "electron-prebuilt": "^0.36.2",
