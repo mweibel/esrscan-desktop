@@ -61,7 +61,7 @@ deploy:
   - provider: releases
     api_key:
       secure: ${GH_TOKEN}
-    file: ./release/osx/ESRScan.dmg
+    file: ./dist/osx/ESRScan-${TRAVIS_TAG}.dmg
     skip_cleanup: true
     overwrite: true
     on:
@@ -70,7 +70,7 @@ deploy:
   - provider: releases
     api_key:
       secure: ${GH_TOKEN}
-    file: ./release/win/ESRScanSetup.exe
+    file: "./dist/win/ESRScan Setup ${TRAVIS_TAG}.exe"
     skip_cleanup: true
     overwrite: true
     on:
@@ -79,7 +79,7 @@ deploy:
   - provider: releases
     api_key:
       secure: ${GH_TOKEN}
-    file: ./release/linux/esrscan-${TRAVIS_TAG}-amd64.deb
+    file: ./dist/ESRScan-${TRAVIS_TAG}.deb
     skip_cleanup: true
     overwrite: true
     on:

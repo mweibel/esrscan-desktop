@@ -2,7 +2,6 @@
 
 if [[ "$ESRSCAN_BUILD" == "windows" ]]; then
   npm run build:win
-  mv ./dist/win/ESRScan\ Setup.exe ./dist/win/ESRScanSetup.exe
 fi
 
 if [[ "$ESRSCAN_BUILD" == "linux" ]]; then
