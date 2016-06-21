@@ -6,7 +6,7 @@ module.exports = {
   },
 
   output: {
-    path: './dist',
+    path: './app/out',
     filename: 'app.js'
   },
 

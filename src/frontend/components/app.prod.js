@@ -6,7 +6,7 @@ function App ({ store }) {
   return (
     <Provider store={store}>
       <div>
-        <Scans/>
+        <Scans />
       </div>
     </Provider>
   )

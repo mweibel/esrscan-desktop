@@ -42,7 +42,7 @@ app.on('ready', function () {
   if (process.env.NODE_ENV === 'development') {
     mainWindow.loadURL('http://localhost:8080/index.html')
   } else {
-    mainWindow.loadURL('file://' + __dirname + '/index.html')
+    mainWindow.loadURL('file://' + __dirname + '/index.html') // eslint-disable-line no-path-concat
   }
 
   // Emitted when the window is closed.
