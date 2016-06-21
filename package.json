@@ -23,16 +23,25 @@
   "build": {
     "appId": "net.openflex.desktop.ESRScan",
     "app-category-type": "public.app-category.productivity",
-    "osx" : {
+    "osx": {
       "title": "ESRScan",
       "icon-size": 80,
       "identity": "Michael Weibel (A3Q6Z5FR3P)",
       "contents": [
-        { "x": 460, "y": 250, "type": "link", "path": "/Applications" },
-        { "x": 180, "y": 250, "type": "file" }
+        {
+          "x": 460,
+          "y": 250,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 180,
+          "y": 250,
+          "type": "file"
+        }
       ]
     },
-    "linux" : {
+    "linux": {
       "synopsis": "Receives invoice scans from the ESRScan mobile app and displays them.",
       "target": "deb"
     }
@@ -54,7 +63,7 @@
   "homepage": "https://github.com/mweibel/esrscan-desktop",
   "devDependencies": {
     "@semantic-release/last-release-git-tag": "git+https://github.com/swissmanu/last-release-git-tag.git#feat-initial-implementation",
-    "babel-core": "^6.4.0",
+    "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.5",
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.1.18",
