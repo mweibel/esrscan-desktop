@@ -23,16 +23,25 @@
   "build": {
     "appId": "net.openflex.desktop.ESRScan",
     "app-category-type": "public.app-category.productivity",
-    "osx" : {
+    "osx": {
       "title": "ESRScan",
       "icon-size": 80,
       "identity": "Michael Weibel (A3Q6Z5FR3P)",
       "contents": [
-        { "x": 460, "y": 250, "type": "link", "path": "/Applications" },
-        { "x": 180, "y": 250, "type": "file" }
+        {
+          "x": 460,
+          "y": 250,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 180,
+          "y": 250,
+          "type": "file"
+        }
       ]
     },
-    "linux" : {
+    "linux": {
       "synopsis": "Receives invoice scans from the ESRScan mobile app and displays them.",
       "target": "deb"
     }
@@ -65,7 +74,7 @@
     "deep-freeze": "0.0.1",
     "electron-builder": "^5.4.2",
     "electron-debug": "^1.0.1",
-    "electron-prebuilt": "^1.2.1",
+    "electron-prebuilt": "^1.2.3",
     "envify": "^3.4.0",
     "eslint": "^2.13.1",
     "eslint-plugin-babel": "^3.0.0",
@@ -82,7 +91,7 @@
     "redux-devtools-log-monitor": "^1.0.1",
     "sass-loader": "^3.2.1",
     "semantic-release": "^4.3.5",
-    "standard": "^7.1.1",
+    "standard": "^7.1.2",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
     "webpack": "^1.12.9",
